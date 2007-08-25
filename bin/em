@@ -1,0 +1,4 @@
+#!/bin/bash
+
+/usr/bin/xemacs -bg white -geometry 114x40+0+0 "$@" &
+
