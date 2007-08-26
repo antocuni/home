@@ -7,13 +7,12 @@ def color(s, fg=1, bg=1):
     return template % (bg, fg, s)
 
 YELLOW = 33
-GRAY = 30
+GRAY = 37
 
 for line in sys.stdin:
     if line.startswith('+'):
         sys.stdout.write(color(line, YELLOW))
     elif line.startswith('-'):
-        sys.stdout.write(color(line, GRAY))
+        sys.stdout.write(color(line, GRAY, bg=0))
     else:
         sys.stdout.write(line)
-
