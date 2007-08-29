@@ -1,0 +1,12 @@
+#!/bin/bash
+
+if [ `dirname "$1"` = . ]
+then
+    FILE=`pwd`/$1
+else
+    FILE=$1
+fi
+
+URL=file://$FILE
+firefox $URL &
+
