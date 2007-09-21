@@ -8,5 +8,5 @@ else
 fi
 
 URL=file://$FILE
-firefox $URL &
+firefox "$URL" &
 

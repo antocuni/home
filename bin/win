@@ -1,0 +1,4 @@
+#!/bin/bash
+
+lilo -R windows
+reboot
