@@ -7,6 +7,6 @@ else
     FILE=$1
 fi
 
-URL=file://$FILE
+URL="file://$FILE"
 firefox "$URL" &
 
