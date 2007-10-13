@@ -1,0 +1,5 @@
+#!/bin/bash
+
+mkdir wav
+cd wav
+cdparanoia -w -B
