@@ -1,12 +1,22 @@
-#!/bin/bash
+#!/usr/bin/env python
 
-if [ `dirname "$1"` = . ]
-then
-    FILE=`pwd`/$1
-else
-    FILE=$1
-fi
+import sys
+import os.path
+from urlparse import urlsplit
+import webbrowser
 
-URL="file://$FILE"
-firefox "$URL" &
+def main():
+    if len(sys.argv) < 2:
+        print >> sys.stderr, 'Usage: f {FILE|URL}'
+        return 1
 
+    arg = sys.argv[1]
+    info = urlsplit(arg)
+    scheme = info[0]
+    if scheme == '':
+        url = 'file://%s' % os.path.abspath(arg)
+    else:
+        url = arg
+    webbrowser.open(url)
+
+sys.exit(main())
