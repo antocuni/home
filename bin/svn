@@ -1,9 +1,7 @@
 #!/bin/bash
 
-if [ "$1" = "diff" ]
-then
-    /usr/bin/svn "$@" | diffpipe.py | less
-else
-    /usr/bin/svn "$@"
-fi
-
+case $1 in
+    diff)     /usr/bin/svn "$@" | diffpipe.py | less ;;
+    f|viewwc) shift 1; viewwc.py "$@" ;;
+    *)        /usr/bin/svn "$@" ;;
+esac
