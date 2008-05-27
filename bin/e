@@ -1,5 +1,11 @@
 #!/bin/bash
 
-/usr/bin/xemacs -bg white -geometry 114x40+0+0 "$@" &
+if gnuclient 2>/dev/null
+then
+    FILE=`abspath.py $1`
+    gnuclient -eval "(find-file \"$FILE\")"
+else
+    /usr/bin/xemacs -bg white -geometry 114x40+0+0 "$@" &
+fi
 
 wmctrl -s 2
