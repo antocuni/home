@@ -1,0 +1,4 @@
+#!/bin/bash
+
+. ~/.settings
+Terminal --role autoterm --tab --tab --tab --geometry=$AUTOTERM_GEOMETRY2
