@@ -3,7 +3,7 @@
 . ~/.settings
 
 killall -9 adesklets
-sleep 0.5
+sleep 1
 adesklets
 
 killall conky 2>/dev/null

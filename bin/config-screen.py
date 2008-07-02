@@ -40,6 +40,7 @@ def main():
     cmd = xrandr_cmds[config]
     os.system(cmd)                                # change the geometry of the screen
     os.system('/home/antocuni/bin/start-desktop') # restart the desklets & co.
+    os.system('bash -c /home/antocuni/bin/reposition-windows.py')
 
 if __name__ == '__main__':
     main()

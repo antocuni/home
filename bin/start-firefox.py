@@ -16,3 +16,5 @@ def main():
             wmctrl.set_geometry(win, os.environ['FIREFOX_GEOMETRY'])
         break
 
+if __name__ == '__main__':
+    main()
