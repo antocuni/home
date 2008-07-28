@@ -2,12 +2,27 @@
 
 . ~/.settings
 
-if gnuclient 2>/dev/null
+wmctrl -s 2
+
+# for gnu emacs
+
+if emacsclient -e '(version)' 2>/dev/null
 then
     FILE=`abspath.py $1`
-    gnuclient -eval "(find-file \"$FILE\")"
+    emacsclient -e "(find-file \"$FILE\")"
 else
-    /usr/bin/xemacs -bg white -geometry $EMACS_GEOMETRY2 "$@" &
+    emacs -geometry $EMACS_GEOMETRY2 "$@" &
 fi
 
-wmctrl -s 2
+
+
+# for xemacs
+#if gnuclient 2>/dev/null
+#then
+#    FILE=`abspath.py $1`
+#    gnuclient -eval "(find-file \"$FILE\")"
+#else
+#    /usr/bin/xemacs -bg white -geometry $EMACS_GEOMETRY2 "$@" &
+#fi
+
+
