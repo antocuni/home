@@ -1,0 +1,12 @@
+#!/bin/bash
+
+case $1 in
+    diff)     
+        if [ -z $EMACS ]
+        then
+            /usr/bin/hg "$@" | diffpipe.py | less 
+        else
+            /usr/bin/hg "$@"
+        fi ;;
+    *)        /usr/bin/hg "$@" ;;
+esac
