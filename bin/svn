@@ -1,7 +1,13 @@
 #!/bin/bash
 
 case $1 in
-    diff)     /usr/bin/svn "$@" | diffpipe.py | less ;;
+    diff)     
+        if [ -z $EMACS ]
+        then
+            /usr/bin/svn "$@" | diffpipe.py | less 
+        else
+            /usr/bin/svn "$@"
+        fi ;;
     f|viewwc) shift 1; viewwc.py "$@" ;;
     *)        /usr/bin/svn "$@" ;;
 esac
