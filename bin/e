@@ -6,10 +6,13 @@ wmctrl -s 2
 
 # for gnu emacs
 
-if emacsclient -e '(version)' 2>/dev/null
+if emacsclient -e '(version)' >/dev/null
 then
-    FILE=`abspath.py $1`
-    emacsclient -e "(find-file \"$FILE\")"
+    for FILE in $@
+    do
+        FILE=`abspath.py $FILE`
+        emacsclient -e "(find-file \"$FILE\")" >/dev/null
+    done
 else
     emacs -geometry $EMACS_GEOMETRY2 "$@" &
 fi
