@@ -6,7 +6,7 @@ wmctrl -s 2
 
 # for gnu emacs
 
-if emacsclient -e '(version)' >/dev/null
+if emacsclient -e '(version)' &>/dev/null
 then
     for FILE in $@
     do
