@@ -1,8 +1,13 @@
 #!/bin/bash
 
+function isatty()
+{
+    python -c 'import sys,os; sys.exit(not os.isatty(1))'
+}
+
 case $1 in
     diff)     
-        if [ -z $EMACS ]
+        if isatty
         then
             /usr/bin/svn "$@" | diffpipe.py | less 
         else
