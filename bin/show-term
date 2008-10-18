@@ -1,4 +1,5 @@
 #!/bin/bash
 
-WIN=`wmctrl -lx | grep Terminal.Terminal | head -1 | cut -d ' ' -f 1`
+#WIN=`wmctrl -lx | grep Terminal.Terminal | head -1 | cut -d ' ' -f 1`
+WIN=`wmctrl -lx | grep rxvt.XTerm | head -1 | cut -d ' ' -f 1`
 wmctrl -i -a $WIN

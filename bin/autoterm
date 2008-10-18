@@ -1,4 +1,12 @@
 #!/bin/bash
 
 . ~/.settings
-Terminal --role autoterm --tab --tab --tab --geometry=$AUTOTERM_GEOMETRY2
+#Terminal --role autoterm --tab --tab --tab --geometry=$AUTOTERM_GEOMETRY2
+
+export LC_ALL=en_US.ISO-8859-15
+
+N=4
+for i in `seq 1 $N`
+do
+    rxvt -name autorxvt -geometry $AUTOTERM_GEOMETRY2 &
+done
