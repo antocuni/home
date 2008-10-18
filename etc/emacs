@@ -70,6 +70,8 @@
 (setq auto-mode-alist
       (append '(("\\.aspx$" . xml-mode)) auto-mode-alist))
 
+(setq auto-mode-alist
+      (append '(("[:/]emacs\\'" . emacs-lisp-mode)) auto-mode-alist))
 
 ; Custom keybindings
 ; =======================
