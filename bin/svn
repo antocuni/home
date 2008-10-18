@@ -13,6 +13,17 @@ case $1 in
         else
             /usr/bin/svn "$@"
         fi ;;
+
+    log)
+        if detect_rxvt.py
+        then
+            shift 1;
+            ~/pypy/user/arigo/hack/rxvt-metadata/python/svnlog.py "$@"
+        else
+            /usr/bin/svn "$@"
+        fi;;
+    
     f|viewwc) shift 1; viewwc.py "$@" ;;
+
     *)        /usr/bin/svn "$@" ;;
 esac
