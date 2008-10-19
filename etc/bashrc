@@ -1,0 +1,109 @@
+# .bashrc
+
+# Source global definitions
+if [ -r /etc/bashrc ]; then
+	. /etc/bashrc
+fi
+
+[[ -f /etc/profile.d/bash-completion ]] && source /etc/profile.d/bash-completion
+
+# ================
+#     Aliases
+# ================
+
+function check()
+{
+    which $1 &> /dev/null 
+}
+
+# change the default arguments of some commands
+alias ls="ls -F --color=auto -B -I '*.pyc' -I '*.pyo'"
+alias lls='/bin/ls --color=auto -F'
+alias findpy="find ./ -name '*.py'"
+check pydf && alias df='pydf'
+check monodoc && alias monodoc='/usr/bin/monodoc > /dev/null 2>&1 &'
+
+alias mcd='mount /mnt/cdrom'
+alias ucd='umount /mnt/cdrom'
+alias musb='mount /mnt/usb'
+alias uusb='umount /mnt/usb'
+alias cl='cd ~/pypy/oo-jit/pypy/jit/codegen/cli'
+
+if [ `hostname` == viper ]
+then
+    alias python2.5='/opt/python2.5/bin/python'
+    alias pythonnet='mono /opt/pythonnet2/python.exe'
+    alias pywin='PYTHONPATH= wine /home/antocuni/.wine/drive_c/Python25/python.exe'
+    alias py.test.net='pythonnet `which py.test`'
+    alias py.test.net.hack='mono /opt/pythonnet2-hacked/python.exe `which py.test`'
+    alias py.test2.5='python2.5 `which py.test`'
+    alias py.py.net='pythonnet `which py.py` --withmod-clr'
+    alias ipy='mono /home/antocuni/IronPython-1.0.1/ipy.exe -X:TabCompletion'
+
+    alias pisa='python /home/antocuni/site-packages/pisa-3.0.22-py2.4.egg/sx/pisa3/pisa.py'
+    alias sqlite3="LD_LIBRARY_PATH=/home/antocuni/lib /usr/bin/sqlite3"
+fi
+
+unset -f check
+
+
+# ==========
+#    MISC
+# ==========
+
+. /home/antocuni/.settings
+
+if [[ $- != *i* ]] ; then
+        # Shell is non-interactive.  Be done now!
+        return
+fi
+
+stty -ixon # disable XON/XOFF flow-conrol (i.e., C-s/C-q)
+
+
+# =============
+#    PROMPT
+# =============
+
+# show the username only if it's not root or antocuni
+if [ "$USER" != antocuni ] && [ "$USER" != root ]
+then
+    U="\u@"
+fi
+   
+case $USER--`hostname` in
+    root--*)                 HCOL=31 ;; # red
+    *--viper)                HCOL=33 ;; # yellow
+    *--wyvern)               HCOL=35 ;; # magenta
+    *--cobra)                HCOL=32 ;; # green
+    *--code0.codespeak.net)  HCOL=34 ;; # blue
+    *)                       HCOL=37 ;; # white
+esac
+
+# adattato da gentoo
+if [ "$TERM" = "emacs" ] || [ "$TERM" = "dumb" ]
+then
+    export PS1="${U}\h \W \$ "
+else
+    export PS1="\[\033[01;${HCOL}m\]${U}\h \[\033[01;36m\]\W \[\033[01;34m\]\$ \[\033[00m\]"
+fi
+unset U
+unset HCOL
+
+
+# =============================
+#    dircolors & xterm title
+# =============================
+
+# Enable colors for ls, etc.  Prefer ~/.dir_colors #64489
+if [[ -f ~/.dir_colors ]]; then
+    eval `dircolors -b ~/.dir_colors`
+else
+    eval `dircolors -b /etc/DIR_COLORS`
+fi
+
+if [ "$TERM" != "emacs" ] && [ "$TERM" != "dumb" ] && [ "$TERM" != "linux" ]
+then
+    . /home/antocuni/pypy/user/antocuni/etc/scripts/preexec.bash.sh
+    preexec_xterm_title_install
+fi

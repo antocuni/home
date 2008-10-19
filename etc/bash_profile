@@ -1,0 +1,49 @@
+# .bash_profile
+
+export BASH_ENV=$HOME/.bashrc
+
+# ==========
+#    PATH
+# ==========
+PATH=~antocuni/bin:$PATH
+PATH=~antocuni/pypy/pypy-dist/py/bin:$PATH
+PATH=~antocuni/pypy/pypy-dist/pypy/bin:$PATH
+PATH=~antocuni/pypy/pypy-dist/pypy/translator/goal/:$PATH
+export PATH
+
+
+# ================
+#    PYTHONPATH
+# ================
+PYTHONPATH=$PYTHONPATH:~antocuni/WebFormKit
+PYTHONPATH=$PYTHONPATH:~antocuni/pypy/pypy-dist
+PYTHONPATH=$PYTHONPATH:~antocuni/pypy/user/antocuni/
+PYTHONPATH=$PYTHONPATH:~antocuni/pypy/user/antocuni/hack/
+PYTHONPATH=$PYTHONPATH:~antocuni/pypy/django/
+PYTHONPATH=$PYTHONPATH:~antocuni/pypy/misc/pg8000/
+PYTHONPATH=$PYTHONPATH:~antocuni/pypy/misc/casalino-carta/
+PYTHONPATH=$PYTHONPATH:~antocuni/site-packages
+export PYTHONPATH
+
+
+# ===================
+# python related vars
+# ===================
+export PYTHONSTARTUP=/home/antocuni/startup.py
+export PYMACS_PYTHON=/opt/python2.5/bin/python
+export PYPY_GENCLI_COPYIL="true"
+
+# ================
+#    misc vars
+# ================
+export FIGNORE='~'
+export BROWSER="firefox:mozilla"
+export SVN_EDITOR="emacs -nw"
+export CLASSPATH=$CLASSPATH:/opt/j2sdk1.4.0_02/JMF-2.1.1e/lib/jmf.jar
+export IPOD_MOUNTPOINT=/mnt/usb
+
+
+# Get the aliases and functions
+if [ -f ~/.bashrc ]; then
+	. ~/.bashrc
+fi

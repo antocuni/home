@@ -4,7 +4,7 @@ import os.path
 
 home = os.path.expanduser('~')
 path = os.path.dirname(os.path.abspath(__file__))
-excludes = ['create_symlinks.py']
+excludes = ['create_symlinks.py', 'scripts']
 
 def symlink(src, dst):
     # check if dst is already a symlink to src
