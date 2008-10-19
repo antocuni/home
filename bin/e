@@ -8,14 +8,14 @@ wmctrl -s 2
 
 if emacsclient -e '(version)' &>/dev/null
 then
-    for FILE in $@
+    for FILE in "$@"
     do
         case $FILE in
             +*) 
                 GOTO=$FILE
                 ;;
             *)
-                FILE=`abspath.py $FILE`
+                FILE=`abspath.py "$FILE"`
                 emacsclient -e "(find-file \"$FILE\")" >/dev/null
                 if [ -n $GOTO ]
                 then

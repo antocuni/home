@@ -1,5 +1,5 @@
 def color(s, fg=1, bg=1):
-    template = '\033[%02d;%02dm%s\033[00m'
+    template = '\033[%02d;%02dm%s\033[0m'
     return template % (bg, fg, s)
 
 RED = 31

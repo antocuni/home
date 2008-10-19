@@ -1,0 +1,4 @@
+#!/bin/bash
+
+python -c 'import sys,os; sys.exit(not os.isatty(1))'
+
