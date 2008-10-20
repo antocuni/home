@@ -6,10 +6,10 @@ export BASH_ENV=$HOME/.bashrc
 # ==========
 #    PATH
 # ==========
-PATH=~antocuni/bin:$PATH
 PATH=~antocuni/pypy/pypy-dist/py/bin:$PATH
 PATH=~antocuni/pypy/pypy-dist/pypy/bin:$PATH
 PATH=~antocuni/pypy/pypy-dist/pypy/translator/goal/:$PATH
+PATH=~antocuni/pypy/user/antocuni/bin:$PATH
 export PATH
 
 
@@ -30,7 +30,7 @@ export PYTHONPATH
 # ===================
 # python related vars
 # ===================
-export PYTHONSTARTUP=/home/antocuni/startup.py
+export PYTHONSTARTUP=~antocuni/startup.py
 export PYMACS_PYTHON=/opt/python2.5/bin/python
 export PYPY_GENCLI_COPYIL="true"
 
