@@ -46,6 +46,7 @@
 ; Misc options
 ; =======================
 
+(setq load-path (cons "/home/antocuni/pypy/user/antocuni/etc/elisp" load-path))
 (setq minibuffer-max-depth nil)
 (setq font-lock-auto-fontify 1)
 (set-default-font "-Adobe-Courier-Medium-R-Normal--18-180-75-75-M-110-ISO8859-1")
@@ -134,7 +135,7 @@
 ; -----------------------
 
 
-(load-file "/home/antocuni/elisp/swbuff-x.el")
+(require 'swbuff)
 (setq swbuff-exclude-buffer-regexps '("^ .*" "^\\*.*\\*"))
 
 (global-set-key [(control x) (x)] 'electric-buffer-list)
@@ -176,7 +177,7 @@
 ; rectangle selection
 ; -----------------------
 
-(load-file "/home/antocuni/elisp/rect-mark.el")
+(require 'rect-mark)
 
 (define-key ctl-x-map "r\C-SPC" 'rm-set-mark)
 (define-key ctl-x-map [?r ?\C-\ ] 'rm-set-mark)
@@ -198,7 +199,6 @@
 ; LRU yank
 ; -----------------------
 
-(load-file "/home/antocuni/elisp/LRU-yank.el")
 (require 'LRU-yank)
 (setq LRU-yank-mode t)
 
@@ -260,7 +260,7 @@ the new line indented."
 (autoload 'pymacs-apply "pymacs")
 (autoload 'pymacs-call "pymacs")
 (eval-after-load "pymacs"
-  '(add-to-list 'pymacs-load-path "/home/antocuni/elisp/pymacs"))
+  '(add-to-list 'pymacs-load-path "/home/antocuni/pypy/user/antocuni/etc/elisp/pymacs"))
 
 (pymacs-load "paste")
 (setq paste-kill-url t)

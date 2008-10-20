@@ -1,3 +1,4 @@
+# -*- mode: shell-script -*-
 # .bash_profile
 
 export BASH_ENV=$HOME/.bashrc

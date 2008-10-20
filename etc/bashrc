@@ -1,3 +1,4 @@
+# -*- mode: shell-script -*-
 # .bashrc
 
 # Source global definitions
@@ -51,15 +52,12 @@ unset -f check
 #    MISC
 # ==========
 
-. /home/antocuni/.settings
+[ -f /home/antocuni/.settings ] && . /home/antocuni/.settings
 
 if [[ $- != *i* ]] ; then
         # Shell is non-interactive.  Be done now!
         return
 fi
-
-stty -ixon # disable XON/XOFF flow-conrol (i.e., C-s/C-q)
-
 
 # =============
 #    PROMPT
@@ -107,3 +105,10 @@ then
     . /home/antocuni/pypy/user/antocuni/etc/scripts/preexec.bash.sh
     preexec_xterm_title_install
 fi
+
+
+# ==================================
+#    disable XON/XOFF flow-conrol
+# ==================================
+
+stty -ixon

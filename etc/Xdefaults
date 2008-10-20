@@ -8,10 +8,12 @@ XTerm*saveLines:            10000
 XTerm*font:                 -Adobe-Courier-Medium-R-Normal--18-180-75-75-M-110-ISO8859-15
 XTerm*color4:               #0000FF
 XTerm*color7:               #AAAAAA
+XTerm*color12:              #3333FF
 
 # these apply only to rxvt, but not to autorxvt
 rxvt*geometry:              91x35
 rxvt*termName:              rxvt
 
+# these apply only to autorxvt
 autorxvt*termName:          rxvt
 autorxvt*backgroundPixmap:  /home/antocuni/.fluxbox/autoterm-bg.xpm
