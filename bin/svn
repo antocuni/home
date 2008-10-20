@@ -18,6 +18,15 @@ case $1 in
             /usr/bin/svn "$@"
         fi;;
 
+    blame|praise|annotate|ann)
+        if detect_rxvt.py
+        then
+            shift 1;
+            /usr/bin/svn blame "$@" | blamepipe.py "$@"
+        else
+            /usr/bin/svn "$@"
+        fi;;
+
     show)
         shift 1;
         if isatty

@@ -1,7 +1,6 @@
 #!/usr/bin/env python
 
 import os
-import sys
 
 def get_repo_root(wcpath):
     g = os.popen('svn info "%s"' % (wcpath,))
@@ -12,12 +11,11 @@ def get_repo_root(wcpath):
             return line[len('Repository Root: '):].strip()
     raise Exception("cannot find the repository root")
 
-def main():
+def parse_args():
     from optparse import OptionParser
     parser = OptionParser(usage='usage: %prog [options] [TARGET]')
     parser.add_option('-r', '--rev', dest='rev', default='1:HEAD',
                       help='svn revision number')
-
     options, args = parser.parse_args()
     if len(args) == 0:
         wcpath = '.'
@@ -26,8 +24,10 @@ def main():
     else:
         parser.print_help()
         parser.exit(1)
+    return options.rev, wcpath
 
-    rev = options.rev
+def main():
+    rev, wcpath = parse_args()
     root = get_repo_root(wcpath)
     os.system('svn log -v -r %s %s' % (rev, root))
     print
