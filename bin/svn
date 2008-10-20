@@ -17,8 +17,18 @@ case $1 in
         else
             /usr/bin/svn "$@"
         fi;;
+
+    show)
+        shift 1;
+        if isatty
+        then
+            svnshow.py "$@" | less
+        else
+            svnshow.py "$@"
+        fi;;
+            
     
     f|viewwc) shift 1; viewwc.py "$@" ;;
 
-    *)        /usr/bin/svn "$@" ;;
+    *) /usr/bin/svn "$@" ;;
 esac
