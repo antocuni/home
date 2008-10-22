@@ -1,5 +1,14 @@
 #!/bin/bash
 
+function get_terminal_width()
+{
+    python -c "
+import sys, rxvtlib
+width, height = rxvtlib.get_terminal_size()
+sys.exit(width)"
+
+}
+
 case $1 in
     diff)     
         if isatty
@@ -22,7 +31,9 @@ case $1 in
         if detect_rxvt.py
         then
             shift 1;
-            /usr/bin/svn blame "$@" | blamepipe.py "$@"
+            get_terminal_width
+            WIDTH=$?
+            /usr/bin/svn blame "$@" | cut -b -$WIDTH | blamepipe.py "$@" | less -r
         else
             /usr/bin/svn "$@"
         fi;;

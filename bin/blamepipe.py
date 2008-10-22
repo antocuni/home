@@ -6,11 +6,7 @@ import rxvtlib
 import svnshow
 from color import color, RED, GREEN, YELLOW, BLUE, MAGENTA, CYAN, GRAY
 
-COLORS = [RED, GREEN, YELLOW, BLUE, MAGENTA, CYAN, GRAY]
-
-def cat():
-    for line in sys.stdin:
-        sys.stdout.write(line)
+COLORS = [CYAN, RED, GREEN, YELLOW, BLUE, MAGENTA, GRAY]
 
 def parseline(line):
     line = line.lstrip()
@@ -22,7 +18,6 @@ def parseline(line):
         return rev, author, ''
     author, line = line.split(' ', 1)
     return rev, author, line
-
 
 def test_parseline():
     import py
@@ -41,10 +36,6 @@ def cycle(key, key2color, bg):
     return color(key, col, bg=bg)
 
 def main():
-    if not rxvtlib.RXVT_TERMINAL:
-        cat()
-        return
-
     _, wcpath = svnshow.parse_args()
     root = svnshow.get_repo_root(wcpath)
     wcpath = os.path.abspath(wcpath)
@@ -62,7 +53,7 @@ def main():
         cmd = rxvtlib.command_in_term(cmd)
         
         rev = cycle(rev, rev2color, bg=1)
-        rev = rxvtlib.format_command(rev, cmd)
+        rev = rxvtlib.format_command(rev, cmd, force=True)
         author = cycle(author, author2color, bg=0)
         sys.stdout.write(' %s   %s %s' % (rev, author, text))
         
