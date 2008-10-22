@@ -10,7 +10,10 @@ def main():
     for win in wmctrl.win_by_name_endswith('Thunderbird'):
         wmctrl.set_geometry(win, os.environ['THUNDERBIRD_GEOMETRY'])
         
-    for win in wmctrl.win_by_role('autoterm'):
+##     for win in wmctrl.win_by_role('autoterm'):
+##         wmctrl.set_geometry(win, os.environ['AUTOTERM_GEOMETRY'])
+
+    for win in wmctrl.win_by_class('autorxvt.XTerm'):
         wmctrl.set_geometry(win, os.environ['AUTOTERM_GEOMETRY'])
 
     for win in wmctrl.win_by_class('emacs.Emacs'):
