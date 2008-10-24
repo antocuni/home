@@ -9,7 +9,7 @@
  '(fill-column 78)
  '(flyspell-issue-message-flag nil)
  '(indent-tabs-mode nil)
- '(inhibit-startup-screen t)
+ '(inhibit-splash-screen t)
  '(menu-bar-mode window-system)
  '(scroll-bar-mode (quote right))
  '(tab-width 4)
