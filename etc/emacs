@@ -52,7 +52,7 @@
 (set-default-font "-Adobe-Courier-Medium-R-Normal--18-180-75-75-M-110-ISO8859-1")
 (savehist-mode t)
 (setenv "EMACS" "ON")
-(require 'graphviz-dot-mode)
+(require 'graphviz-dot-mode nil t)
 
 ; don't start the server in tty mode
 (if window-system
@@ -260,10 +260,10 @@ the new line indented."
 (autoload 'pymacs-apply "pymacs")
 (autoload 'pymacs-call "pymacs")
 (eval-after-load "pymacs"
-  '(add-to-list 'pymacs-load-path "/home/antocuni/pypy/user/antocuni/etc/elisp/pymacs"))
-
-(pymacs-load "paste")
-(setq paste-kill-url t)
+  '(progn
+     (add-to-list 'pymacs-load-path "/home/antocuni/pypy/user/antocuni/etc/elisp/pymacs")
+     (pymacs-load "paste")
+     (setq paste-kill-url t)))
 
 
 ; Color theme for X window
