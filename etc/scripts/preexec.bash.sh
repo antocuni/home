@@ -135,11 +135,17 @@ function preexec_screen_title () {
 function preexec_xterm_title_install () {
     # These functions are defined here because they only make sense with the
     # preexec_install below.
+
+    if [ $HOSTNAME != viper ]
+    then
+        HOST="$HOSTNAME: "
+    fi
+
     function precmd () {
         WD=`dirs -0`
         WD=${WD/\~\/pypy\/trunk\/pypy/pypy}
         WD=${WD/\~\/pypy\/oo-jit\/pypy/oo-jit}
-        preexec_xterm_title "${USER/antocuni/} $WD $PROMPTCHAR"
+        preexec_xterm_title "${HOST}${USER/antocuni/} $WD $PROMPTCHAR"
         if [[ "$TERM" == screen ]]
         then
             if [[ "$SCREEN_RUN_HOST" == "$SCREEN_HOST" ]]
@@ -152,7 +158,7 @@ function preexec_xterm_title_install () {
     }
 
     function preexec () {
-        preexec_xterm_title "$1 (`dirs -0`)"
+        preexec_xterm_title "${HOST}$1 (`dirs -0`)"
         if [[ $TERM == screen ]]
         then
             local cutit="$1"
