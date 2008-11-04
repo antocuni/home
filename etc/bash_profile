@@ -6,9 +6,9 @@ export BASH_ENV=$HOME/.bashrc
 # ==========
 #    PATH
 # ==========
-PATH=~antocuni/pypy/pypy-dist/py/bin:$PATH
-PATH=~antocuni/pypy/pypy-dist/pypy/bin:$PATH
-PATH=~antocuni/pypy/pypy-dist/pypy/translator/goal/:$PATH
+PATH=~antocuni/pypy/trunk/py/bin:$PATH
+PATH=~antocuni/pypy/trunk/pypy/bin:$PATH
+PATH=~antocuni/pypy/trunk/pypy/translator/goal/:$PATH
 PATH=~antocuni/pypy/user/antocuni/bin:$PATH
 export PATH
 
@@ -21,7 +21,7 @@ fi
 #    PYTHONPATH
 # ================
 PYTHONPATH=$PYTHONPATH:~antocuni/WebFormKit
-PYTHONPATH=$PYTHONPATH:~antocuni/pypy/pypy-dist
+PYTHONPATH=$PYTHONPATH:~antocuni/pypy/trunk/
 PYTHONPATH=$PYTHONPATH:~antocuni/pypy/user/antocuni/
 PYTHONPATH=$PYTHONPATH:~antocuni/pypy/user/antocuni/hack/
 PYTHONPATH=$PYTHONPATH:~antocuni/pypy/django/
