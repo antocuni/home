@@ -3,6 +3,7 @@
 import sys
 import os.path
 from urlparse import urlsplit
+from urllib import quote
 import webbrowser
 
 def main():
@@ -14,7 +15,9 @@ def main():
     info = urlsplit(arg)
     scheme = info[0]
     if scheme == '':
-        url = 'file://%s' % os.path.abspath(arg)
+        arg = os.path.abspath(arg)
+        arg = quote(arg)
+        url = 'file://%s' % arg
     else:
         url = arg
     webbrowser.open(url)
