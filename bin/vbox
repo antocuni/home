@@ -1,4 +1,5 @@
 #!/bin/bash
 
 sudo modprobe vboxdrv
+sudo /home/antocuni/bin/config-vbox
 VirtualBox

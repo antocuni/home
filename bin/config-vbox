@@ -1,0 +1,5 @@
+#!/bin/bash
+
+modprobe tun
+tunctl -u antocuni
+ifconfig tap0 192.168.42.1
