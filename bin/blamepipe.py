@@ -25,12 +25,14 @@ def test_parseline():
     assert parseline('123456       anto bla bla') == ('123456', '       anto', ' bla bla')
     py.test.raises(ValueError, parseline, ' xxx   antocuni bla bla')
 
-def cycle(key, key2color, bg):
+def cycle(key, key2color, bg, text=None):
+    if text is None:
+        text = key
     col = key2color.get(key)
     if not col:
         col = COLORS[len(key2color) % len(COLORS)]
         key2color[key] = col
-    return color(key, col, bg=bg)
+    return color(text, col, bg=bg)
 
 def main():
     _, wcpath = svnshow.parse_args()
