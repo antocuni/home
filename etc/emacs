@@ -266,6 +266,21 @@ the new line indented."
      (setq paste-kill-url t)))
 
 
+; sum a column of numbers
+; =======================
+(defun sum-column (start end)
+  "Adds numbers in a rectangle. Digits must be aligned correctly"
+  (interactive "r")
+  (copy-rectangle-to-register 9 start end)
+  (set-buffer (get-buffer-create "*calc-sum*"))
+  (erase-buffer)
+  (insert-register 9)
+  (let ((sum 0))
+    (while (re-search-forward "[0-9]*\\.?[0-9]+" nil t)
+      (setq sum (+ sum (string-to-number (match-string 0)))))
+    (message "Sum: %f" sum)))
+
+
 ; Color theme for X window
 ; =======================
 
