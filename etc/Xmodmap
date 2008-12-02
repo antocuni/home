@@ -97,8 +97,8 @@ keycode 117 = XF86Terminal
 !add mod4 = Super_L Super_R
 !add mod1 = Alt_L
 
-!clear Control
+! assign XF86Memo to the caps lock key, and make the '<' key another control
 clear Lock
-!keycode 66 = Control_L
-keycode 37 = Shift_L
-add Control = Caps_Lock
+keycode 94 = Control_L
+keycode 66 = XF86Memo
+add Control = Control_L
