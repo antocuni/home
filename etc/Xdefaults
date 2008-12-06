@@ -16,4 +16,4 @@ rxvt*termName:              rxvt
 
 # these apply only to autorxvt
 autorxvt*termName:          rxvt
-autorxvt*backgroundPixmap:  /home/antocuni/.fluxbox/autoterm-bg.xpm
+#autorxvt*backgroundPixmap:  /home/antocuni/.fluxbox/autoterm-bg.xpm
