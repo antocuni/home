@@ -41,6 +41,7 @@ export PYPY_GENCLI_COPYIL="true"
 # ================
 #    misc vars
 # ================
+export LESS=-R $LESS
 export FIGNORE='~'
 export BROWSER="firefox:mozilla"
 export SVN_EDITOR="emacs -nw"
