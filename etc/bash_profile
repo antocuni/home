@@ -24,7 +24,7 @@ PYTHONPATH=$PYTHONPATH:~antocuni/WebFormKit
 PYTHONPATH=$PYTHONPATH:~antocuni/pypy/trunk/
 PYTHONPATH=$PYTHONPATH:~antocuni/pypy/user/antocuni/
 PYTHONPATH=$PYTHONPATH:~antocuni/pypy/user/antocuni/hack/
-PYTHONPATH=$PYTHONPATH:~antocuni/pypy/django/
+#PYTHONPATH=$PYTHONPATH:~antocuni/pypy/django/
 PYTHONPATH=$PYTHONPATH:~antocuni/pypy/misc/pg8000/
 PYTHONPATH=$PYTHONPATH:~antocuni/pypy/misc/casalino-carta/
 PYTHONPATH=$PYTHONPATH:~antocuni/site-packages
@@ -41,7 +41,7 @@ export PYPY_GENCLI_COPYIL="true"
 # ================
 #    misc vars
 # ================
-export LESS=-R $LESS
+export LESS="-R $LESS"
 export FIGNORE='~'
 export BROWSER="firefox:mozilla"
 export SVN_EDITOR="emacs -nw"
