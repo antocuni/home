@@ -2,4 +2,5 @@
 
 modprobe tun
 tunctl -u antocuni
+chmod 0666 /dev/net/tun
 ifconfig tap0 192.168.42.1

@@ -36,7 +36,7 @@ def cycle(key, key2color, bg, text=None):
 
 def main():
     _, wcpath = svnshow.parse_args()
-    root = svnshow.get_repo_root(wcpath)
+    #root = svnshow.get_repo_root(wcpath)
     wcpath = os.path.abspath(wcpath)
 
     rev2color = {}

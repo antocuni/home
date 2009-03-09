@@ -5,7 +5,7 @@ from commands import getoutput
 
 xrandr_cmds = {
     'single-head': 'xrandr --output VGA --off --fb 1280x800',
-    'dual-head':   'xrandr --output VGA --auto --right-of LVDS'
+    'dual-head':   'xrandr --output VGA --auto --above LVDS'
     }
 
 def xrandr_query():

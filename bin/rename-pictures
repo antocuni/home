@@ -1,0 +1,3 @@
+#!/bin/bash
+
+jhead "-n%m-%d %H%S" *.jpg
