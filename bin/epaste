@@ -1,11 +1,17 @@
-#!/bin/bash
+#!/usr/bin/env python
+# -*- mode: python -*-
 
-e "$@"
-TEXT=`cat`
-N=0
-while [ $N -lt 10 ]
-do
-    emacsclient -e "(insert \"$TEXT\")" &>/dev/null && exit
-    sleep 0.1
-    N=`expr $N + 1`
-done
+import sys
+import time
+import subprocess
+
+text = sys.stdin.read()
+subprocess.Popen(["e"] + sys.argv).wait()
+for i in range(10):
+    cmd = 'emacsclient -e "(insert \"%s\")" &>/dev/null' % text
+    args = ['emacsclient', '-e', '(insert "%s")' % text]
+    proc = subprocess.Popen(args, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+    retval = proc.wait()
+    if retval == 0:
+        break
+    time.sleep(0.1)
