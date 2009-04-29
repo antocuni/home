@@ -6,7 +6,7 @@ import time
 import subprocess
 
 text = sys.stdin.read()
-subprocess.Popen(["e"] + sys.argv).wait()
+subprocess.Popen(["e"] + sys.argv[1:]).wait()
 for i in range(10):
     cmd = 'emacsclient -e "(insert \"%s\")" &>/dev/null' % text
     args = ['emacsclient', '-e', '(insert "%s")' % text]
