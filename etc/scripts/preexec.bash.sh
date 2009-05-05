@@ -145,6 +145,7 @@ function preexec_xterm_title_install () {
         WD=`dirs -0`
         WD=${WD/\~\/pypy\/trunk\/pypy/pypy}
         WD=${WD/\~\/pypy\/oo-jit\/pypy/oo-jit}
+        WD=${WD/\~\/pypy\/pyjitpl5\/pypy/pyjitpl5}
         preexec_xterm_title "${HOST}${USER/antocuni/} $WD $PROMPTCHAR"
         if [[ "$TERM" == screen ]]
         then
