@@ -13,20 +13,37 @@ def read_titles():
     f.close()
     return artist, album, songs
 
+def parse_song(song):
+    try:
+        num, name = song.split(' ', 1)
+        num = int(num)
+        return num, name
+    except ValueError:
+        return -1, song
+
+
 def main():
+    dummy = '--dummy' in sys.argv
     mp3s = glob.glob('*.mp3')
+    mp3s.sort()
     artist, album, songs = read_titles()
     if len(mp3s) != len(songs):
         print >> sys.stderr, "Invalid number of titles"
         sys.exit(1)
 
-    for filename, songname in zip(mp3s, songs):
-        tag = pyid3lib.tag(filename)
-        tag.album = album
-        tag.artist = artist
-        tag.title = songname.split(' ', 1)[1] # remove the number in front
-        tag.update()
-        shutil.move(filename, songname + '.mp3')
+    for filename, song in zip(mp3s, songs):
+        tracknum, songname = parse_song(song)
+        if dummy:
+            print '%s --> %s' % (filename, song + '.mp3')
+        else:
+            tag = pyid3lib.tag(filename)
+            tag.album = album
+            tag.artist = artist
+            tag.title = songname
+            if tracknum != -1:
+                tag.track = tracknum
+            tag.update()
+            shutil.move(filename, song + '.mp3')
 
 if __name__ == '__main__':
     main()

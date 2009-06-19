@@ -22,7 +22,7 @@ case $1 in
         if detect_rxvt.py
         then
             shift 1;
-            ~/pypy/user/arigo/hack/rxvt-metadata/python/svnlog.py "$@"
+            ~/pypy/user/arigo/hack/rxvt-metadata/python/svnlog.py "$@" | less -r
         else
             /usr/bin/svn "$@"
         fi;;
