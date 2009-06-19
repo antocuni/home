@@ -87,7 +87,6 @@
 (global-set-key [XF86Memo] 'set-mark-command)
 (global-set-key [(shift XF86Memo)] 'keyboard-quit)
 
-(global-set-key [(control x) (control a)] 'replace-string)
 (global-set-key [(control l)] 'font-lock-fontify-buffer)
 (global-set-key [(control c) (d)] 'kill-whole-line)
 
@@ -108,7 +107,7 @@
 
 
 
-; shift regions
+; command on regions
 ; -----------------------
 
 ; like python-shift-left but don't deactivate the mark
@@ -137,8 +136,31 @@
       ;; for transient mark mode
       (setq deactivate-mark nil))))
 
+; like replace-string, but don't deactivate the mark
+(defun my-replace-string (from-string to-string &optional delimited start end)
+  (interactive
+   (let ((common
+	  (query-replace-read-args
+	   (if (and transient-mark-mode mark-active)
+	       "Replace string in region"
+	     "Replace string")
+	   nil)))
+     (list (nth 0 common) (nth 1 common) (nth 2 common)
+	   (if (and transient-mark-mode mark-active)
+	       (region-beginning))
+	   (if (and transient-mark-mode mark-active)
+	       (region-end)))))
+  (let ((mark (mark)))
+    (save-excursion
+      (perform-replace from-string to-string nil nil delimited nil nil start end)
+      (push-mark mark t t)
+      ;; Tell the command loop not to deactivate the mark
+      ;; for transient mark mode
+      (setq deactivate-mark nil))))
+
 (global-set-key "\C-c>" 'my-shift-right)
 (global-set-key "\C-c<" 'my-shift-left)
+(global-set-key [(control x) (control a)] 'my-replace-string)
 
 
 ; buffers & windows
@@ -211,6 +233,13 @@
 
 (require 'LRU-yank)
 (setq LRU-yank-mode t)
+
+
+; enable save-place
+; =======================
+(setq save-place-file "~/.emacs.d/saveplace") ;; keep my ~/ clean
+(setq-default save-place t)                   ;; activate it for all buffers
+(require 'saveplace)                          ;; get the package
 
 ; Python mode extensions
 ; =======================
@@ -609,3 +638,15 @@ the new line indented."
       (color-theme-initialize)
       (tty-dark-color-theme)))
 
+
+;; host-specific setup
+(if (string= (getenv "HOSTNAME") "viper")
+    (progn
+      (require 'emms-setup)
+      (emms-standard)
+      (emms-default-players)
+
+      (add-hook
+       'dired-mode-hook
+       (lambda ()
+         (local-set-key "z" 'emms-play-dired)))))
