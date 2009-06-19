@@ -3,6 +3,19 @@
 
 export BASH_ENV=$HOME/.bashrc
 
+# make sure HOSTNAME is defined
+if [ -z $HOSTNAME ]
+then
+    HOSTNAME=`hostname`
+fi
+
+# =======
+# history
+# =======
+
+export HISTCONTROL=ignoredups
+
+
 # ==========
 #    PATH
 # ==========

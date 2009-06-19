@@ -41,7 +41,8 @@ then
     alias py.test.net.hack='mono /opt/pythonnet2-hacked/python.exe `which py.test`'
     alias py.test2.5='python2.5 `which py.test`'
     alias py.py.net='pythonnet `which py.py` --withmod-clr'
-    alias ipy='mono /home/antocuni/IronPython-1.0.1/ipy.exe -X:TabCompletion'
+    alias ipy='mono /home/antocuni/IronPython-2.0.1/ipy.exe -X:TabCompletion'
+    alias ipy10='mono /home/antocuni/IronPython-1.0.1/ipy.exe -X:TabCompletion'
 
     alias pisa='python /home/antocuni/site-packages/pisa-3.0.22-py2.4.egg/sx/pisa3/pisa.py'
     alias sqlite3="LD_LIBRARY_PATH=/home/antocuni/lib /usr/bin/sqlite3"
