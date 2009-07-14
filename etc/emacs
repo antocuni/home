@@ -297,10 +297,11 @@ the new line indented."
 (autoload 'pymacs-eval "pymacs" nil t)
 (autoload 'pymacs-apply "pymacs")
 (autoload 'pymacs-call "pymacs")
+(autoload 'paste-new-from-region "pymacs" nil t)
 (eval-after-load "pymacs"
   '(progn
      (add-to-list 'pymacs-load-path "/home/antocuni/pypy/user/antocuni/etc/elisp/pymacs")
-     (pymacs-load "paste")
+     (pymacs-load "pastemacs" "paste-")
      (setq paste-kill-url t)))
 
 
