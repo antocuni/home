@@ -16,8 +16,9 @@ then
                 ;;
             *)
                 FILE=`abspath.py "$FILE"`
+                emacsclient -e "(setq file-name-history (cons \"$FILE\" file-name-history))" >/dev/null
                 emacsclient -e "(find-file \"$FILE\")" >/dev/null
-                if [ -n $GOTO ]
+                if [ -n "$GOTO" ]
                 then
                     emacsclient -e "(goto-line $GOTO)" >/dev/null 
                     GOTO=
