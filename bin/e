@@ -7,24 +7,25 @@ function do_local()
 
     if emacsclient -e '(version)' &>/dev/null
     then
-        for FILE in "$@"
-        do
-            case $FILE in
-                +*) 
-                    GOTO=$FILE
-                    ;;
-                *)
-                    FILE=`abspath.py "$FILE"`
-                    emacsclient -e "(setq file-name-history (cons \"$FILE\" file-name-history))" >/dev/null
-                    emacsclient -e "(find-file \"$FILE\")" >/dev/null
-                    if [ -n "$GOTO" ]
-                    then
-                        emacsclient -e "(goto-line $GOTO)" >/dev/null 
-                        GOTO=
-                    fi
-                    ;;
-            esac
-        done
+        emacsclient -n "$@"
+        # for FILE in "$@"
+        # do
+        #     case $FILE in
+        #         +*) 
+        #             GOTO=$FILE
+        #             ;;
+        #         *)
+        #             FILE=`abspath.py "$FILE"`
+        #             emacsclient -e "(setq file-name-history (cons \"$FILE\" file-name-history))" >/dev/null
+        #             emacsclient -e "(find-file \"$FILE\")" >/dev/null
+        #             if [ -n "$GOTO" ]
+        #             then
+        #                 emacsclient -e "(goto-line $GOTO)" >/dev/null 
+        #                 GOTO=
+        #             fi
+        #             ;;
+        #     esac
+        # done
     else
         emacs -geometry $EMACS_GEOMETRY2 "$@" &
     fi

@@ -5,13 +5,22 @@ import sys
 import time
 import subprocess
 
+# we need to manually switch to the first buffer in the buffer list, because
+# with emacsclient 23 (current-buffer) is set to #<buffer *server*> by default
+CMD = """
+  (progn
+    (switch-to-buffer (car (buffer-list))) 
+    (insert "%s"))
+"""
+
 text = sys.stdin.read()
 subprocess.Popen(["e"] + sys.argv[1:]).wait()
 for i in range(10):
-    cmd = 'emacsclient -e "(insert \"%s\")" &>/dev/null' % text
-    args = ['emacsclient', '-e', '(insert "%s")' % text]
+    cmd = CMD % (text.replace('"', '\\"'),)
+    args = ['emacsclient', '-e', cmd]
     proc = subprocess.Popen(args, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
     retval = proc.wait()
     if retval == 0:
         break
     time.sleep(0.1)
+
