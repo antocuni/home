@@ -5,7 +5,7 @@ case $1 in
     rai2)    FREQ=567.438 ;;
     rai3)    FREQ=583.375 ;;
     rete4)   FREQ=719.562 ;;
-    canale5) FREQ=775.500 ;;
+    canale5) FREQ=775.250 ;;
     italia1) FREQ=783.625 ;;
     la7)     FREQ=687.562 ;;
     sky)     FREQ=823.250 ;;
@@ -17,8 +17,11 @@ echo $FREQ
 #ENCODE="transcode{vcodec=H263,acodec=mpga,vb=210,ab=48,samplerate=44100,venc=ffmpeg{keyint=80,hurry-up,vt=800000},deinterlace}"
 
 # to tweak the quality, change vb and fps
-SRC="v4l2:///dev/video0:width=352:height=288:v4l2-tuner-frequency=$FREQ"
-ENCODE="#transcode{vcodec=H264,vb=230,fps=15,scale=1,acodec=mp3,ab=48,channels=2,samplerate=44100,deinterlace}" # XXX: H263?
+#SRC="v4l2:///dev/video0:width=352:height=288:v4l2-tuner-frequency=$FREQ"
+SRC="v4l2:///dev/video0:width=320:height=240:v4l2-tuner-frequency=$FREQ"
+#SRC="v4l2:///dev/video0:width=176:height=112:v4l2-tuner-frequency=$FREQ"
+
+ENCODE="#transcode{vcodec=H264,vb=230,fps=15,scale=1,acodec=mp3,ab=48,channels=2,samplerate=44100,deinterlace}"
 STREAM="std{access=http,mux=asf,dst=:1234}"
 
 vlc -vvv --color $SRC :input-slave=alsa:// --sout "$ENCODE:$STREAM" --ttl 12 -I dummy
