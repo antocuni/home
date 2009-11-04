@@ -1,13 +1,37 @@
 #!/bin/bash
 
-. ~/.settings
+function do_local()
+{
+    . ~/.settings
+    wmctrl -s 2
 
-wmctrl -s 2
+    if emacsclient -e '(version)' &>/dev/null
+    then
+        for FILE in "$@"
+        do
+            case $FILE in
+                +*) 
+                    GOTO=$FILE
+                    ;;
+                *)
+                    FILE=`abspath.py "$FILE"`
+                    emacsclient -e "(setq file-name-history (cons \"$FILE\" file-name-history))" >/dev/null
+                    emacsclient -e "(find-file \"$FILE\")" >/dev/null
+                    if [ -n "$GOTO" ]
+                    then
+                        emacsclient -e "(goto-line $GOTO)" >/dev/null 
+                        GOTO=
+                    fi
+                    ;;
+            esac
+        done
+    else
+        emacs -geometry $EMACS_GEOMETRY2 "$@" &
+    fi
+}
 
-# for gnu emacs
-
-if emacsclient -e '(version)' &>/dev/null
-then
+function do_remote()
+{
     for FILE in "$@"
     do
         case $FILE in
@@ -16,29 +40,17 @@ then
                 ;;
             *)
                 FILE=`abspath.py "$FILE"`
-                emacsclient -e "(setq file-name-history (cons \"$FILE\" file-name-history))" >/dev/null
-                emacsclient -e "(find-file \"$FILE\")" >/dev/null
-                if [ -n "$GOTO" ]
-                then
-                    emacsclient -e "(goto-line $GOTO)" >/dev/null 
-                    GOTO=
-                fi
+                FILE="/`hostname`:/$FILE"
+                local_exec.py e $GOTO "$FILE"
                 ;;
         esac
     done
+}
+
+
+if [ -n "$SSH_CONNECTION" ]
+then
+    do_remote "$@"
 else
-    emacs -geometry $EMACS_GEOMETRY2 "$@" &
+    do_local "$@"
 fi
-
-
-
-# for xemacs
-#if gnuclient 2>/dev/null
-#then
-#    FILE=`abspath.py $1`
-#    gnuclient -eval "(find-file \"$FILE\")"
-#else
-#    /usr/bin/xemacs -bg white -geometry $EMACS_GEOMETRY2 "$@" &
-#fi
-
-
