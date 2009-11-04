@@ -83,7 +83,7 @@ keycode 133 = XF86ScreenSaver
 ! le seguenti righe servono se voglio usarli come modificatori
 ! tastiera convenzionale, commentate perche` ora uso la Apple
 keycode 115 = Super_L
-keycode 116 = XF86Messenger
+keycode 116 = Super_R
 keycode 117 = XF86Terminal
 
 ! questa sezione è specifica per la tastiera Apple -- inverto i tasti alt e mela

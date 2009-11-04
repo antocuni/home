@@ -139,6 +139,9 @@ function preexec_xterm_title_install () {
     if [ $HOSTNAME != viper ]
     then
         HOST="$HOSTNAME: "
+    elif [ -f /etc/32bit ]
+    then
+        HOST="32: "
     fi
 
     function precmd () {

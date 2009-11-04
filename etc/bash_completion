@@ -1,3 +1,3 @@
 SCRIPTS=/home/antocuni/pypy/user/antocuni/etc/scripts
 complete -o bashdefault -o default -C $SCRIPTS/completepytest.py py.test py.test2.5 py.test.net py.test.net.hack
-complete -o bashdefault -o default -C $SCRIPTS/completetranslate.py ./translate.py
+#complete -o bashdefault -o default -C $SCRIPTS/completetranslate.py ./translate.py

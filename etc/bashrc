@@ -6,7 +6,13 @@ if [ -r /etc/bashrc ]; then
 	. /etc/bashrc
 fi
 
-[[ -f /etc/profile.d/bash-completion ]] && source /etc/profile.d/bash-completion
+if [ -f /etc/profile./bash-completion ]    # for gentoo
+then
+    source /etc/profile.d/bash-completion
+elif [ -f /etc/bash_completion ]
+then
+    source /etc/bash_completion
+fi
 
 # ================
 #     Aliases
@@ -34,7 +40,7 @@ alias lstree='find . -name .svn -prune -o -type d | sed -e "s/[^-][^\/]*\//  |/g
 
 if [ `hostname` == viper ]
 then
-    alias python2.5='/opt/python2.5/bin/python'
+    #alias python2.5='/opt/python2.5/bin/python'
     alias pythonnet='mono /opt/pythonnet2/python.exe'
     alias pywin='PYTHONPATH= wine /home/antocuni/.wine/drive_c/Python25/python.exe'
     alias py.test.net='pythonnet `which py.test`'
@@ -46,6 +52,7 @@ then
 
     alias pisa='python /home/antocuni/site-packages/pisa-3.0.22-py2.4.egg/sx/pisa3/pisa.py'
     alias sqlite3="LD_LIBRARY_PATH=/home/antocuni/lib /usr/bin/sqlite3"
+    alias latexmk='/home/antocuni/latexmk/latexmk.pl'
 fi
 
 unset -f check
@@ -81,16 +88,27 @@ case $USER--`hostname` in
     *)                       HCOL=37 ;; # white
 esac
 
+# if we are inside the 32bit chroot, show it in the prompt
+if [ -f /etc/32bit ]
+then
+    LOCAL=~/local/32
+    P32="/32"
+else
+    LOCAL=~/local/64
+fi
+
 # adattato da gentoo
 if [ "$TERM" = "emacs" ] || [ "$TERM" = "dumb" ]
 then
-    export PS1="${U}\h \W \$ "
+    export PS1="${U}${P32}\h \W \$ "
 else
-    export PS1="\[\033[01;${HCOL}m\]${U}\h \[\033[01;36m\]\W \[\033[01;34m\]\$ \[\033[00m\]"
+    export PS1="\[\033[01;${HCOL}m\]${U}\h\[\033[01;32m\]${P32} \[\033[01;36m\]\W \[\033[01;34m\]\$ \[\033[00m\]"
 fi
 unset U
 unset HCOL
 
+export LD_LIBRARY_PATH="$LOCAL/lib:$LD_LIBRARY_PATH"
+export PATH="$LOCAL/bin:$PATH"
 
 # =============================
 #    dircolors & xterm title

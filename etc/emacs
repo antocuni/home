@@ -11,10 +11,10 @@
  '(indent-tabs-mode nil)
  '(inhibit-startup-screen t)
  '(menu-bar-mode window-system)
+ '(safe-local-variable-values (quote ((encoding . utf-8))))
  '(scroll-bar-mode (quote right))
  '(tab-width 4)
  '(tool-bar-mode nil)
- '(transient-mark-mode t)
  '(user-mail-address "anto.cuni@gmail.com")
  '(vc-follow-symlinks t)
  '(x-select-enable-clipboard t))
@@ -24,12 +24,16 @@
   ;; If you edit it by hand, you could mess it up, so be careful.
   ;; Your init file should contain only one such instance.
   ;; If there is more than one, they won't work right.
- '(default ((t (:size "18pt" :family "Courier"))))
+ '(default ((t (:height 148 :family "Inconsolata"))))
  '(bold ((t (:size "" :bold t))))
  '(bold-italic ((t (:bold t :italic nil))))
  '(dired-flagged ((t (:inherit font-lock-warning-face :background "#F88" :foreground "black"))))
  '(dired-mark ((t (:inherit font-lock-constant-face :foreground "red"))))
  '(dired-marked ((t (:inherit dired-mark))))
+ '(font-latex-bold-face ((((class color) (background dark)) (:inherit bold :weight bold))))
+ '(font-latex-italic-face ((((class color) (background dark)) (:inherit italic :slant italic :family "Courier New"))))
+ '(font-latex-sectioning-5-face ((((class color) (background dark)) (:inherit variable-pitch :weight bold))))
+ '(font-latex-sedate-face ((((class color) (background dark)) (:foreground "#FF7777"))))
  '(font-lock-comment-face ((((class color) (min-colors 88) (background light)) (:foreground "#777"))))
  '(font-lock-function-name-face ((((class color) (background light)) (:foreground "blue"))))
  '(font-lock-keyword-face ((((class color) (background light)) (:foreground "red"))))
@@ -49,7 +53,7 @@
 (setq load-path (cons "/home/antocuni/pypy/user/antocuni/etc/elisp" load-path))
 (setq minibuffer-max-depth nil)
 (setq font-lock-auto-fontify 1)
-(set-default-font "-Adobe-Courier-Medium-R-Normal--18-180-75-75-M-110-ISO8859-1")
+;(set-default-font "-Adobe-Courier-Medium-R-Normal--18-180-75-75-M-110-ISO8859-1")
 (savehist-mode t)
 (setenv "EMACS" "ON")
 (require 'graphviz-dot-mode nil t)
@@ -80,6 +84,9 @@
 
 (setq auto-mode-alist
       (append '(("[:/]emacs\\'" . emacs-lisp-mode)) auto-mode-alist))
+
+(setq auto-mode-alist
+      (append '(("\\.cs$" . java-mode)) auto-mode-alist))
 
 ; Custom keybindings
 ; =======================
@@ -318,6 +325,24 @@ the new line indented."
     (while (re-search-forward "[0-9]*\\.?[0-9]+" nil t)
       (setq sum (+ sum (string-to-number (match-string 0)))))
     (message "Sum: %f" sum)))
+
+
+; run pdflatex
+; ============
+
+(defun my-tex-compile ()
+  (interactive)
+  (let ((cmd (concat "pdflatex thesis.tex"))); (tex-main-file))))
+    (if (= 0 (save-window-excursion
+               (shell-command cmd "*Tex Command Output*")))
+        (message "Ok")
+      (switch-to-buffer (get-buffer "*Tex Command Output*")))))
+
+(defun my-tex-ext ()
+  (local-set-key "\C-c\C-c" 'my-tex-compile))
+(add-hook 'TeX-mode-hook 'my-tex-ext)
+
+(add-hook 'doc-view-mode-hook 'auto-revert-mode)
 
 
 ; Color theme for X window
