@@ -93,6 +93,7 @@
 
 (global-set-key [XF86Memo] 'set-mark-command)
 (global-set-key [(shift XF86Memo)] 'keyboard-quit)
+(global-set-key [mouse-2] 'mouse-yank-primary)
 
 (global-set-key [(control l)] 'font-lock-fontify-buffer)
 (global-set-key [(control c) (d)] 'kill-whole-line)
