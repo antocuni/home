@@ -1,42 +1,16 @@
-! *********************
-! tastiera multimediale
-! *********************
+! ********************************
+! Latin-1 keys on top of US layout
+! ********************************
 
-keycode 223 = XF86Sleep
-keycode 161 = XF86Calculator
-keycode 174 = XF86AudioLowerVolume
-keycode 160 = XF86AudioMute
-keycode 176 = XF86AudioRaiseVolume
-keycode 162 = XF86AudioPlay
-keycode 164 = XF86AudioStop
-keycode 144 = XF86AudioPrev
-keycode 153 = XF86AudioNext
-
-keycode 130 = XF86WWW
-keycode 236 = XF86Mail
-keycode 122 = XF86Search
-keycode 234 = XF86Back
-keycode 233 = XF86Forward
-keycode 230 = XF86Favorites
-
-keycode 188 = XF86Cut
-keycode 248 = XF86Copy
-keycode 196 = XF86Paste
-
-
-! ***************************************
-! tasti Latin-1 sopra un layout americano
-! ***************************************
-
-! prima di tutto devo assicurarmi il modificatore "alt" (mod1)
-! sia associato solo ad Alt_L e non Alt_R (Alt Gr)
+! first of all, ensure that "alt" (mod1) is associated only to Alt_L but not
+! to Alt_R
 clear mod1
 add mod1 = Alt_L
 
-! imposto Alt_R (Alt Gr) come ulteriore modificatore
-keycode 113 = Mode_switch
+! then, set Alt_R (Alt Gr) as Mode_switch
+keysym Alt_R = Mode_switch
 
-! imposto i tasti aggiuntivi
+! set additional keys
 keysym a = a A agrave Agrave
 keysym e = e E egrave Egrave
 keysym bracketleft = bracketleft braceleft eacute Eacute
@@ -48,45 +22,35 @@ keysym w = w W EuroSign
 keysym apostrophe = apostrophe quotedbl degree
 keysym backslash = backslash bar masculine ordfeminine
 
-! **************************
-! tasti per Acer Aspire 1357
-! **************************
 
-! nell'ordine, sono:
-!   bluetooth
-!   wireless
-!   p1
-!   p2
-!   www
-!   [mail non c'e`, lo scancode era gia` associato a XF86Mail]
-!   fn+f1
-!   fn+f2
-!   fn+f3 (non attivo)
+! ************
+! Windows Keys
+! ************
+! usually, they are bound to keycodes 115 and 116
 
-keycode 123 = XF86Launch3
-keycode 222 = XF86Launch4
-keycode 139 = XF86Launch1
-keycode 134 = XF86Launch2
-!keycode 178 
-!keycode 121 
-keycode 133 = XF86ScreenSaver
-!keycode XXX (fn+f3 non attivo - modificare /etc/init.d/acerhk)
+! on ubuntu, they are already set this way, so comment out
+!keycode 115 = Super_L
+!keycode 116 = Super_R
 
-! ***********************************************
-! imposto il binding corretto per i tasti windows
-! ***********************************************
+! we want to use the right one as a hotkey, not as a modifier
+keysym Super_R = XF86Messenger
 
-! queste servono se voglio usarli come hotkeys
-!keycode 115 = F13
-!keycode 116 = F14
+! **********************
+! Swap CapsLock and Ctrl
+! **********************
+! assign XF86Memo to the caps lock key, and make the '<' key another control
+clear Lock
+keycode 94 = Control_L
+keycode 66 = XF86Memo
+add Control = Control_L
 
-! le seguenti righe servono se voglio usarli come modificatori
-! tastiera convenzionale, commentate perche` ora uso la Apple
-keycode 115 = Super_L
-keycode 116 = Super_R
-keycode 117 = XF86Terminal
 
-! questa sezione è specifica per la tastiera Apple -- inverto i tasti alt e mela
+
+! **************
+! Apple Keyboard
+! **************
+
+! swap "alt" and "apple" keys
 !keycode 115 = Alt_L
 !keycode 116 = Mode_switch
 !keycode 64 = Super_L
@@ -96,9 +60,3 @@ keycode 117 = XF86Terminal
 !clear mod5
 !add mod4 = Super_L Super_R
 !add mod1 = Alt_L
-
-! assign XF86Memo to the caps lock key, and make the '<' key another control
-clear Lock
-keycode 94 = Control_L
-keycode 66 = XF86Memo
-add Control = Control_L
