@@ -21,7 +21,7 @@ echo $FREQ
 SRC="v4l2:///dev/video0:width=320:height=240:v4l2-tuner-frequency=$FREQ"
 #SRC="v4l2:///dev/video0:width=176:height=112:v4l2-tuner-frequency=$FREQ"
 
-ENCODE="#transcode{vcodec=H264,vb=230,fps=15,scale=1,acodec=mp3,ab=48,channels=2,samplerate=44100,deinterlace}"
+ENCODE="#transcode{vcodec=H264,vb=200,fps=15,scale=1,acodec=mp3,ab=48,channels=2,samplerate=44100,deinterlace}"
 STREAM="std{access=http,mux=asf,dst=:1234}"
 
 vlc -vvv --color $SRC :input-slave=alsa:// --sout "$ENCODE:$STREAM" --ttl 12 -I dummy

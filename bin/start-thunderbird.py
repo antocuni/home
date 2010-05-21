@@ -5,7 +5,7 @@ import time
 import wmctrl
 
 def main():
-    os.system('thunderbird &')
+    os.system('LC_ALL=en_IE.utf8 thunderbird &')
 
     while True:
         windows = wmctrl.win_by_name_endswith('Thunderbird')

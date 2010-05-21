@@ -3,7 +3,7 @@
 import glob
 import shutil
 import sys
-import pyid3lib
+import ID3
 
 def read_titles():
     f = open('album.txt')
@@ -36,13 +36,13 @@ def main():
         if dummy:
             print '%s --> %s' % (filename, song + '.mp3')
         else:
-            tag = pyid3lib.tag(filename)
+            tag = ID3.ID3(filename)
             tag.album = album
             tag.artist = artist
             tag.title = songname
             if tracknum != -1:
                 tag.track = tracknum
-            tag.update()
+            tag.write()
             shutil.move(filename, song + '.mp3')
 
 if __name__ == '__main__':

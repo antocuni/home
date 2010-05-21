@@ -2,7 +2,7 @@
 
 case $1 in
     diff)     
-        if [ -z $EMACS ]
+        if [ -z $EMACS ] && isatty
         then
             /usr/bin/hg "$@" | diffpipe.py | less 
         else

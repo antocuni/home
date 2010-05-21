@@ -5,7 +5,7 @@
 
 export LC_ALL=en_US.ISO-8859-15
 
-N=${1:-4}
+N=${1:-6}
 for i in `seq 1 $N`
 do
     rxvt -name autorxvt -geometry $AUTOTERM_GEOMETRY2 &
