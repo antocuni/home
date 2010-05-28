@@ -46,17 +46,3 @@ add Control = Control_L
 
 
 
-! **************
-! Apple Keyboard
-! **************
-
-! swap "alt" and "apple" keys
-!keycode 115 = Alt_L
-!keycode 116 = Mode_switch
-!keycode 64 = Super_L
-!keycode 113 = XF86Terminal
-!clear mod1
-!clear mod4
-!clear mod5
-!add mod4 = Super_L Super_R
-!add mod1 = Alt_L

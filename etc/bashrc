@@ -47,10 +47,9 @@ then
     alias py.test.net.hack='mono /home/antocuni/opt/pythonnet2-hacked/python.exe `which py.test`'
     alias py.test2.5='python2.5 `which py.test`'
     alias py.py.net='pythonnet `which py.py` --withmod-clr'
-    alias ipy='mono /home/antocuni/IronPython-2.0.1/ipy.exe -X:TabCompletion'
-    alias ipy10='mono /home/antocuni/IronPython-1.0.1/ipy.exe -X:TabCompletion'
-
-    alias pisa='python /home/antocuni/site-packages/pisa-3.0.22-py2.4.egg/sx/pisa3/pisa.py'
+#    alias ipy='mono /home/antocuni/IronPython-2.0.1/ipy.exe -X:TabCompletion'
+#    alias ipy10='mono /home/antocuni/IronPython-1.0.1/ipy.exe -X:TabCompletion'
+    
     alias sqlite3="LD_LIBRARY_PATH=/home/antocuni/lib /usr/bin/sqlite3"
     alias latexmk='/home/antocuni/latexmk/latexmk.pl'
 fi
@@ -82,6 +81,8 @@ fi
 case $USER--`hostname` in
     root--*)                 HCOL=31 ;; # red
     *--viper)                HCOL=33 ;; # yellow
+    *--viper2)               HCOL=32 ;; # green
+    *--anaconda)             HCOL=32 ;; # green
     *--wyvern)               HCOL=35 ;; # magenta
     *--cobra)                HCOL=32 ;; # green
     *--code0.codespeak.net)  HCOL=34 ;; # blue
@@ -94,7 +95,7 @@ then
     LOCAL=~/local/32
     P32="/32"
 else
-    LOCAL=~/local/64
+    LOCAL=~/local/32 # XXX
 fi
 
 # adattato da gentoo

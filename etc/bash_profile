@@ -40,7 +40,7 @@ PYTHONPATH=$PYTHONPATH:~antocuni/pypy/user/antocuni/hack/
 #PYTHONPATH=$PYTHONPATH:~antocuni/pypy/django/
 PYTHONPATH=$PYTHONPATH:~antocuni/pypy/misc/pg8000/
 PYTHONPATH=$PYTHONPATH:~antocuni/pypy/misc/casalino-carta/
-PYTHONPATH=$PYTHONPATH:~antocuni/site-packages
+PYTHONPATH=$PYTHONPATH:~antocuni/pypy/misc/execnet/
 export PYTHONPATH
 
 
@@ -48,7 +48,7 @@ export PYTHONPATH
 # python related vars
 # ===================
 export PYTHONSTARTUP=~antocuni/startup.py
-export PYMACS_PYTHON=/opt/python2.5/bin/python
+#export PYMACS_PYTHON=/opt/python2.5/bin/python
 export PYPY_GENCLI_COPYIL="true"
 
 # ================
@@ -58,6 +58,7 @@ export LESS="-R $LESS"
 export FIGNORE='~'
 export BROWSER="firefox:mozilla"
 export SVN_EDITOR="emacs -nw"
+export EDITOR="emacs -nw"
 export CLASSPATH=$CLASSPATH:/opt/j2sdk1.4.0_02/JMF-2.1.1e/lib/jmf.jar
 export IPOD_MOUNTPOINT=/mnt/usb
 

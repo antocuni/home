@@ -3,6 +3,7 @@
   ;; If you edit it by hand, you could mess it up, so be careful.
   ;; Your init file should contain only one such instance.
   ;; If there is more than one, they won't work right.
+ '(auto-revert-interval 1)
  '(blink-cursor-mode nil)
  '(dabbrev-case-distinction t)
  '(dabbrev-case-fold-search nil)
@@ -10,12 +11,14 @@
  '(flyspell-issue-message-flag nil)
  '(indent-tabs-mode nil)
  '(inhibit-startup-screen t)
+ '(ispell-check-comments nil)
  '(menu-bar-mode window-system)
- '(safe-local-variable-values (quote ((encoding . utf-8))))
+ '(rst-level-face-base-color "blackn")
+ '(safe-local-variable-values (quote ((auto-revert-interval . 0.5) (auto-revert-interval . 0.2) (encoding . utf-8))))
  '(scroll-bar-mode (quote right))
  '(scroll-conservatively 100000)
  '(scroll-margin 0)
- '(scroll-preserve-screen-position 1)
+ '(scroll-preserve-screen-position t)
  '(tab-width 4)
  '(tool-bar-mode nil)
  '(user-mail-address "anto.cuni@gmail.com")
@@ -43,7 +46,10 @@
  '(font-lock-string-face ((((class color) (min-colors 88) (background light)) (:foreground "green4"))))
  '(font-lock-type-face ((((class color) (min-colors 88) (background light)) (:foreground "blue"))))
  '(font-lock-warning-face ((((class color) (background light)) (:foreground "Blue"))))
- '(italic ((t (:size "" :italic t)))))
+ '(italic ((t (:size "" :italic t))))
+ '(rst-level-1-face ((t (:foreground "red"))) t)
+ '(rst-level-2-face ((t (:foreground "#F55"))) t)
+ '(underline ((((supports :underline t)) (:slant italic)))))
 
 
 ; ***********************
@@ -60,6 +66,7 @@
 (savehist-mode t)
 (setenv "EMACS" "ON")
 (require 'graphviz-dot-mode nil t)
+(menu-bar-mode -1)
 
 
 ; don't start the server in tty mode
@@ -343,8 +350,24 @@ the new line indented."
       (switch-to-buffer (get-buffer "*Tex Command Output*")))))
 
 (defun my-tex-ext ()
+  (flyspell-mode)
+  (auto-fill-mode)
   (local-set-key "\C-c\C-c" 'my-tex-compile))
 (add-hook 'TeX-mode-hook 'my-tex-ext)
+
+
+(defun my-rst2beamer-compile ()
+  (interactive)
+  (let ((cmd (concat "make"))); (tex-main-file))))
+    (if (= 0 (save-window-excursion
+               (shell-command cmd "*Tex Command Output*")))
+        (message "Ok")
+      (switch-to-buffer (get-buffer "*Tex Command Output*")))))
+
+(defun my-rst-ext ()
+  (local-set-key "\C-c\C-c" 'my-rst2beamer-compile))
+(add-hook 'rst-mode-hook 'my-rst-ext)
+
 
 (add-hook 'doc-view-mode-hook 'auto-revert-mode)
 
