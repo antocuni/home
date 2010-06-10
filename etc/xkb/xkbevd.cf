@@ -1,0 +1,5 @@
+soundDirectory="/home/antocuni/sounds/"
+soundCmd="aplay -q"
+
+Bell() "arrive.wav"
+
