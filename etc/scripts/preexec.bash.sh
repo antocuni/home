@@ -136,12 +136,13 @@ function preexec_xterm_title_install () {
     # These functions are defined here because they only make sense with the
     # preexec_install below.
 
-    if [ $HOSTNAME != viper ]
+    if [ -n "$SSH_CLIENT" ]
     then
         HOST="$HOSTNAME: "
-    elif [ -f /etc/32bit ]
+    fi
+    if [ -f /etc/32bit ]
     then
-        HOST="32: "
+        HOST="32: $HOST"
     fi
 
     function precmd () {
