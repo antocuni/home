@@ -9,13 +9,20 @@ sys.exit(width)"
 
 }
 
+if [ -x /usr/bin/svn ]
+then
+    SVN=/usr/bin/svn
+else
+    SVN=/usr/local/bin/svn
+fi
+
 case $1 in
     diff)     
         if isatty
         then
-            /usr/bin/svn "$@" | diffpipe.py | less 
+            $SVN "$@" | diffpipe.py | less 
         else
-            /usr/bin/svn "$@"
+            $SVN "$@"
         fi ;;
 
     log)
@@ -24,7 +31,7 @@ case $1 in
             shift 1;
             ~/pypy/user/arigo/hack/rxvt-metadata/python/svnlog.py "$@" | less -r
         else
-            /usr/bin/svn "$@"
+            $SVN "$@"
         fi;;
 
     blame|praise|annotate|ann)
@@ -33,9 +40,9 @@ case $1 in
             shift 1;
             get_terminal_width
             WIDTH=$?
-            /usr/bin/svn blame "$@" | cut -b -$WIDTH | blamepipe.py "$@" | less -r
+            $SVN blame "$@" | cut -b -$WIDTH | blamepipe.py "$@" | less -r
         else
-            /usr/bin/svn "$@"
+            $SVN "$@"
         fi;;
 
     show)
@@ -50,5 +57,5 @@ case $1 in
     
     f|viewwc) shift 1; viewwc.py "$@" ;;
 
-    *) /usr/bin/svn "$@" ;;
+    *) $SVN "$@" ;;
 esac

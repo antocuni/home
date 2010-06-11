@@ -84,6 +84,7 @@ case $USER--`hostname` in
     *--viper2)               HCOL=32 ;; # green
     *--anaconda)             HCOL=32 ;; # green
     *--wyvern)               HCOL=35 ;; # magenta
+    *--tannit)               HCOL=35 ;; # blue
     *--cobra)                HCOL=32 ;; # green
     *--code0.codespeak.net)  HCOL=34 ;; # blue
     *)                       HCOL=37 ;; # white
