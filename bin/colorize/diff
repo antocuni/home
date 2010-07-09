@@ -1,0 +1,7 @@
+#!/usr/bin/python
+from colorize import *
+
+Run(Rules(RegexpGroupsColors('^((?:> |\\+).*)$', Green),
+          RegexpGroupsColors('^(<(?: .*|)|-.*)$', Red)),
+    Rules(RegexpGroupsColors('^(diff: Try `)(.*)(\' for more information.)$', Red, Red + Bold, Red),
+          ConstantColor(Red)))

@@ -1,0 +1,39 @@
+#!/usr/bin/python
+from colorize import *
+import sys
+
+def Stdout(args):
+  if len(args) == 1:
+    return None
+  op = args[1]
+  if op == 'diff':
+    return Rules(
+        RegexpGroupsColors('^((?:> |\\+).*)$', Green),
+        RegexpGroupsColors('^(<(?: .*|)|-.*)$', Red))
+  if op in ['commit', 'ci']:
+    return Rules(
+        RegexpGroupsColors('^(Committed revision )([0-9]+)(\\.)$', '', Bold, ''),
+        RegexpGroupsColors('^(Sending\s*)(.*)$', '', Bold))
+  if op in ['up', 'update']:
+    return Rules(
+        RegexpGroupsColors('^(At revision |Updated to revision )([0-9]+)(\\.)$', '', Bold, ''),
+        RegexpGroupsColors('^(A\s+.*)$', Green),
+        RegexpGroupsColors('^(D\s+.*)$', Red))
+  if op in ['stat']:
+    return Rules(
+        RegexpGroupsColors('^(A\s+.*)$', Green),
+        RegexpGroupsColors('^(D\s+.*)$', Red))
+  if op in ['add']:
+    return RegexpGroupsColors('^(A\s+.*)$', Green)
+  if op in ['ps', 'propset']:
+    return RegexpGroupsColors('^(Property \')(.*)(\' set on \')(.*)(\')$', '', Bold, '', Bold, '')
+  if op in ['pd', 'propdel']:
+    return RegexpGroupsColors('^(Property \')(.*)(\' )(deleted)( on \')(.*)(\')$', '', Bold, '', Green, '', Bold, '')
+  return None
+
+def Stderr(args):
+  if len(args) == 1:
+    return RegexpGroupsColors('^(Type \')(.*)(\' for usage.)$', '', Bold, '')
+  return None
+ 
+Run(Stdout(sys.argv), Stderr(sys.argv))

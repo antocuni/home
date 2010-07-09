@@ -1,0 +1,11 @@
+#!/usr/bin/python
+from colorize import *
+
+Run(RegexpGroupsColors('^(\S+)( on )(\S+)( type )(\S+)( \\()(.*)(\\))$', Bold, '', Bold, '', Bold, '', Bold, ''),
+    Rules(RegexpGroupsColors(
+              '^(mount: can\'t find )(.*)( in /etc/fstab or /etc/mtab)$',
+              Red, Red + Bold, Red),
+          RegexpGroupsColors(
+              '^(mount: according to )(.*)(, )(.*)( is already mounted on )(.*)$',
+              Red, Red + Bold, Red, Red + Bold, Red, Red + Bold),
+          ConstantColor(Red)))

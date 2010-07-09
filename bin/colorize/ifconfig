@@ -1,0 +1,6 @@
+#!/usr/bin/python
+from colorize import *
+
+Run(Rules(
+    RegexpGroupsColors('^([^ ]+)( .*)$', Bold, ''),
+    RegexpGroupsColors('^( *inet addr:)([0-9.]+) (.*)$', '', Bold, '')))

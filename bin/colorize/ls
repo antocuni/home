@@ -1,0 +1,7 @@
+#!/usr/bin/python
+from colorize import *
+
+Run(None,
+    Rules(RegexpGroupsColors('^(ls: (?:cannot (?:access|open) )?)(.*)(: (?:Permission denied|No such file or directory))$',
+                             Red, Red + Bold, Red),
+          ConstantColor(Red)))

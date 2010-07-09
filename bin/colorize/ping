@@ -1,0 +1,7 @@
+#!/usr/bin/python
+from colorize import *
+
+Run(Header(
+    RegexpGroupsColors('^(PING )([^ ]*)( \\()([0-9.]+)(\\) .*)$', Underline, Bold + Underline, Underline, Bold + Underline, Underline),
+    RegexpGroupsColors('^([0-9]+ bytes from .+(?: ?\\([0-9.]+\\))?: icmp_seq=)([0-9]+)( ttl=)([0-9]+)( time=)([0-9.]+ [a-z]+)$',
+                       '', Bold, '', Bold, '', Bold)))

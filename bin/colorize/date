@@ -1,0 +1,4 @@
+#!/usr/bin/python
+from colorize import *
+
+Run(CharsDict({':': Blue, '/': Blue}))

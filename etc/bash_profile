@@ -22,7 +22,7 @@ export HISTCONTROL=ignoredups
 PATH=~antocuni/pypy/trunk/py/bin:$PATH
 PATH=~antocuni/pypy/trunk/pypy/bin:$PATH
 PATH=~antocuni/pypy/trunk/pypy/translator/goal/:$PATH
-PATH=~antocuni/pypy/user/antocuni/bin:$PATH
+PATH=~antocuni/pypy/user/antocuni/bin:~antocuni/pypy/user/antocuni/bin/colorize:$PATH
 export PATH
 
 if [ `hostname` == cobra ]

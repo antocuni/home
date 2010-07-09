@@ -1,0 +1,6 @@
+#!/usr/bin/python
+from colorize import *
+
+Run(Rules(
+    RegexpGroupsColors('^(.* has address )([0-9.]*)$', '', Bold),
+    RegexpGroupsColors('^(.* mail is handled by )(.*)$', '', Bold)))
