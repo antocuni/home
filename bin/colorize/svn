@@ -6,25 +6,22 @@ def Stdout(args):
   if len(args) == 1:
     return None
   op = args[1]
-  if op == 'diff':
-    return Rules(
-        RegexpGroupsColors('^((?:> |\\+).*)$', Green),
-        RegexpGroupsColors('^(<(?: .*|)|-.*)$', Red))
   if op in ['commit', 'ci']:
     return Rules(
-        RegexpGroupsColors('^(Committed revision )([0-9]+)(\\.)$', '', Bold, ''),
-        RegexpGroupsColors('^(Sending\s*)(.*)$', '', Bold))
+        RegexpGroupsColors('^(Committed revision )([0-9]+)(\\.)$', '', Green+Bold, ''),
+        RegexpGroupsColors('^(Sending\s*)(.*)$', '', Yellow+Bold))
   if op in ['up', 'update']:
     return Rules(
         RegexpGroupsColors('^(At revision |Updated to revision )([0-9]+)(\\.)$', '', Bold, ''),
         RegexpGroupsColors('^(A\s+.*)$', Green),
         RegexpGroupsColors('^(D\s+.*)$', Red))
-  if op in ['stat']:
+  if op in ['st', 'stat']:
     return Rules(
-        RegexpGroupsColors('^(A\s+.*)$', Green),
-        RegexpGroupsColors('^(D\s+.*)$', Red))
+        RegexpGroupsColors('^(A\s+.*)$', Green+Bold),
+        RegexpGroupsColors('^(D\s+.*)$', Gray),
+        RegexpGroupsColors('^(C\s+.*)$', Red+Bold))
   if op in ['add']:
-    return RegexpGroupsColors('^(A\s+.*)$', Green)
+    return RegexpGroupsColors('^(A\s+.*)$', Green+Bold)
   if op in ['ps', 'propset']:
     return RegexpGroupsColors('^(Property \')(.*)(\' set on \')(.*)(\')$', '', Bold, '', Bold, '')
   if op in ['pd', 'propdel']:

@@ -1,4 +1,4 @@
 #!/usr/bin/python
 from colorize import *
 
-Run(RegexpGroupsColors('^(\S+)(=.*)$', Bold, ''))
+Run(RegexpGroupsColors('^(\S+)(=.*)$', Red+Bold, ''))

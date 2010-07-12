@@ -1,8 +1,0 @@
-#!/usr/bin/python
-from colorize import *
-
-Run(None,
-    Rules(RegexpGroupsColors(
-              '^(rm: cannot remove (?:directory )?`)(.*)(\': .*)$',
-              Red, Red + Bold, Red),
-          ConstantColor(Red)))

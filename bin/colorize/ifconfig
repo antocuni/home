@@ -2,5 +2,5 @@
 from colorize import *
 
 Run(Rules(
-    RegexpGroupsColors('^([^ ]+)( .*)$', Bold, ''),
-    RegexpGroupsColors('^( *inet addr:)([0-9.]+) (.*)$', '', Bold, '')))
+    RegexpGroupsColors('^([^ ]+)( .*)$', Cyan+Bold, ''),
+    RegexpGroupsColors('^( *inet addr:)([0-9.]+) (.*)$', '', Yellow+Bold, '')))
