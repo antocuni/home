@@ -62,12 +62,6 @@ export EDITOR="emacs -nw"
 export CLASSPATH=$CLASSPATH:/opt/j2sdk1.4.0_02/JMF-2.1.1e/lib/jmf.jar
 export IPOD_MOUNTPOINT=/mnt/usb
 
-if [ -d ~/pypy/misc/root ]
-then
-    export ROOTSYS="/home/antocuni/pypy/misc/root"
-    export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:$ROOTSYS/lib"
-fi
-
 
 # Get the aliases and functions
 if [ -f ~/.bashrc ]; then

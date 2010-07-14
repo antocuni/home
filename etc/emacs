@@ -61,12 +61,14 @@
 ; =======================
 
 (setq load-path (cons "/home/antocuni/pypy/user/antocuni/etc/elisp" load-path))
+(setq load-path (cons "/home/antocuni/pypy/trunk/pypy/jit/tool" load-path))
 (setq minibuffer-max-depth nil)
 (setq font-lock-auto-fontify 1)
 ;(set-default-font "-Adobe-Courier-Medium-R-Normal--18-180-75-75-M-110-ISO8859-1")
 (savehist-mode t)
 (setenv "EMACS" "ON")
 (require 'graphviz-dot-mode nil t)
+(require 'pypytrace-mode nil t)
 (menu-bar-mode -1)
 
 

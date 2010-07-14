@@ -112,6 +112,13 @@ unset HCOL
 export LD_LIBRARY_PATH="$LOCAL/lib:$LD_LIBRARY_PATH"
 export PATH="$LOCAL/bin:$PATH"
 
+if [ -d ~/pypy/misc/root ]
+then
+    export ROOTSYS="/home/antocuni/pypy/misc/root"
+    export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:$ROOTSYS/lib"
+fi
+
+
 # =============================
 #    dircolors & xterm title
 # =============================
