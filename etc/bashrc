@@ -50,7 +50,7 @@ then
 #    alias ipy='mono /home/antocuni/IronPython-2.0.1/ipy.exe -X:TabCompletion'
 #    alias ipy10='mono /home/antocuni/IronPython-1.0.1/ipy.exe -X:TabCompletion'
     
-    alias sqlite3="LD_LIBRARY_PATH=/home/antocuni/lib /usr/bin/sqlite3"
+#    alias sqlite3="LD_LIBRARY_PATH=/home/antocuni/lib /usr/bin/sqlite3"
     alias latexmk='/home/antocuni/latexmk/latexmk.pl'
 fi
 
@@ -96,7 +96,7 @@ then
     LOCAL=~/local/32
     P32="/32"
 else
-    LOCAL=~/local/32 # XXX
+    LOCAL=~/local/64 # XXX
 fi
 
 # adattato da gentoo
@@ -109,7 +109,7 @@ fi
 unset U
 unset HCOL
 
-export LD_LIBRARY_PATH="$LOCAL/lib:$LD_LIBRARY_PATH"
+export LD_LIBRARY_PATH="$LOCAL/lib"
 export PATH="$LOCAL/bin:$PATH"
 
 if [ -d ~/pypy/misc/root ]
@@ -135,6 +135,16 @@ then
     . /home/antocuni/pypy/user/antocuni/etc/scripts/preexec.bash.sh
     preexec_xterm_title_install
 fi
+
+
+# =======================
+#    virtualenvwrapper
+# =======================
+
+export WORKON_HOME=~/Envs
+mkdir -p $WORKON_HOME
+source /usr/local/bin/virtualenvwrapper.sh
+
 
 
 # ==================================

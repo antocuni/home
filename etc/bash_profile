@@ -33,13 +33,13 @@ fi
 # ================
 #    PYTHONPATH
 # ================
-PYTHONPATH=$PYTHONPATH:~antocuni/WebFormKit
-PYTHONPATH=$PYTHONPATH:~antocuni/pypy/trunk/
+#PYTHONPATH=$PYTHONPATH:~antocuni/WebFormKit
+PYTHONPATH=~antocuni/pypy/trunk/
 PYTHONPATH=$PYTHONPATH:~antocuni/pypy/user/antocuni/
 PYTHONPATH=$PYTHONPATH:~antocuni/pypy/user/antocuni/hack/
 #PYTHONPATH=$PYTHONPATH:~antocuni/pypy/django/
 PYTHONPATH=$PYTHONPATH:~antocuni/pypy/misc/pg8000/
-PYTHONPATH=$PYTHONPATH:~antocuni/pypy/misc/casalino-carta/
+#PYTHONPATH=$PYTHONPATH:~antocuni/pypy/misc/casalino-carta/
 PYTHONPATH=$PYTHONPATH:~antocuni/pypy/misc/execnet/
 export PYTHONPATH
 

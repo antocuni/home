@@ -1,3 +1,14 @@
 #!/bin/bash
 
-scp "$1" wyvern:torrent/
+case "$1" in
+    *.torrent) 
+        NAME="$1" 
+        ;;
+
+    *) 
+        NAME="$1.torrent"
+        cp "$1" "$NAME"
+        ;;
+esac
+    
+scp "$NAME" wyvern:torrent
