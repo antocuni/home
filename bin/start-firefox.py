@@ -8,12 +8,12 @@ def main():
     os.system('firefox &')
 
     while True:
-        windows = wmctrl.win_by_name_endswith('Mozilla Firefox')
+        windows = wmctrl.Window.by_name_endswith('Mozilla Firefox')
         if not windows:
             time.sleep(0.5)
             continue
         for win in windows:
-            wmctrl.set_geometry(win, os.environ['FIREFOX_GEOMETRY'])
+            win.set_geometry(os.environ['FIREFOX_GEOMETRY'])
         break
 
 if __name__ == '__main__':

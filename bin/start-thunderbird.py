@@ -8,12 +8,12 @@ def main():
     os.system('LC_ALL=en_IE.utf8 thunderbird &')
 
     while True:
-        windows = wmctrl.win_by_name_endswith('Thunderbird')
+        windows = wmctrl.Window.by_name_endswith('Thunderbird')
         if not windows:
             time.sleep(0.5)
             continue
         for win in windows:
-            wmctrl.set_geometry(win, os.environ['THUNDERBIRD_GEOMETRY'])
+            win.set_geometry(os.environ['THUNDERBIRD_GEOMETRY'])
         break
 
 if __name__ == '__main__':

@@ -3,7 +3,7 @@
 import sys
 import os
 import time
-import wmctrl
+from wmctrl import Window
 
 def main():
 
@@ -12,12 +12,12 @@ def main():
     os.system('keyjnote --fullscreen -g 1024x768 %s &' % arglist)
 
     while True:
-        windows = wmctrl.win_by_name_startswith('KeyJnote')
+        windows = Window.by_name_startswith('KeyJnote')
         if not windows:
             time.sleep(0.5)
             continue
         for win in windows:
-            wmctrl.resize_and_move(win, 0, 0, 1024, 768)
+            win.resize_and_move(0, 0, 1024, 768)
         break
 
 if __name__ == '__main__':

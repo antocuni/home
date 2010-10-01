@@ -1,23 +1,23 @@
 #!/usr/bin/env python
 
 import os
-import wmctrl
+from wmctrl import Window
 
 def main():
-    for win in wmctrl.win_by_name_endswith('Mozilla Firefox'):
-        wmctrl.set_geometry(win, os.environ['FIREFOX_GEOMETRY'])
+    for win in Window.by_name_endswith('Mozilla Firefox'):
+        win.set_geometry(os.environ['FIREFOX_GEOMETRY'])
         
-    for win in wmctrl.win_by_name_endswith('Thunderbird'):
-        wmctrl.set_geometry(win, os.environ['THUNDERBIRD_GEOMETRY'])
+    for win in Window.by_name_endswith('Thunderbird'):
+        win.set_geometry(os.environ['THUNDERBIRD_GEOMETRY'])
         
 ##     for win in wmctrl.win_by_role('autoterm'):
 ##         wmctrl.set_geometry(win, os.environ['AUTOTERM_GEOMETRY'])
 
-    for win in wmctrl.win_by_class('autorxvt.XTerm'):
-        wmctrl.set_geometry(win, os.environ['AUTOTERM_GEOMETRY'])
+    for win in Window.by_class('autorxvt.XTerm'):
+        win.set_geometry(os.environ['AUTOTERM_GEOMETRY'])
 
-    for win in wmctrl.win_by_class('emacs.Emacs'):
-        wmctrl.set_geometry(win, os.environ['EMACS_GEOMETRY'])
+    for win in Window.by_class('emacs.Emacs'):
+        win.set_geometry(os.environ['EMACS_GEOMETRY'])
 
 if __name__ == '__main__':
     main()
