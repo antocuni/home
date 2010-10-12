@@ -34,6 +34,9 @@
  '(default ((t (:height 148 :family "Inconsolata"))))
  '(bold ((t (:size "" :bold t))))
  '(bold-italic ((t (:bold t :italic nil))))
+ '(diff-added ((t (:inherit diff-changed :foreground "yellow"))))
+ '(diff-context ((((class color grayscale) (min-colors 88)) (:inherit shadow :foreground "white"))))
+ '(diff-removed ((t (:inherit diff-changed :foreground "grey"))))
  '(dired-flagged ((t (:inherit font-lock-warning-face :background "#F88" :foreground "black"))))
  '(dired-mark ((t (:inherit font-lock-constant-face :foreground "red"))))
  '(dired-marked ((t (:inherit dired-mark))))
@@ -76,7 +79,6 @@
 (if window-system
     (server-start))
 
-
 ;(require 'auto-complete)
 ;(global-auto-complete-mode t)
 ;(setq ac-auto-start nil)
@@ -110,6 +112,7 @@
 
 (global-set-key [(control l)] 'font-lock-fontify-buffer)
 (global-set-key [(control c) (d)] 'kill-whole-line)
+(global-set-key [(control x) (g)] 'rgrep)
 
 (global-set-key [(control z)]
 		(function (lambda () (interactive) (set-mark-command 0))))
