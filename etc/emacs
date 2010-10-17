@@ -87,6 +87,11 @@
 ;(setq ac-auto-start nil)
 ;(global-set-key "\M-/" 'ac-start)
 
+(add-to-list 'load-path "~/pypy/user/antocuni/etc/elisp/auto-complete")
+(require 'auto-complete-config)
+(add-to-list 'ac-dictionary-directories "~/pypy/user/antocuni/etc/elisp/auto-complete/ac-dict")
+(ac-config-default)
+ 
 
 ; auto-mode-alist
 ; =======================
