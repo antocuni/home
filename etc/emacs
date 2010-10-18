@@ -83,18 +83,40 @@
 (if window-system
     (server-start))
 
-;(require 'auto-complete)
-;(global-auto-complete-mode t)
-;(setq ac-auto-start nil)
-;(global-set-key "\M-/" 'ac-start)
+
+; =================
+; auto-complete
+; =================
 
 (add-to-list 'load-path "~/pypy/user/antocuni/etc/elisp/auto-complete")
 (require 'auto-complete-config)
 (add-to-list 'ac-dictionary-directories "~/pypy/user/antocuni/etc/elisp/auto-complete/ac-dict")
 (ac-config-default)
 
-(require 'find-file-in-project)
-(global-set-key [(control x) (f)] 'find-file-in-project)
+; use dabbrev as the main source for auto-complete
+(require 'cl)
+(require 'dabbrev)
+(require 'auto-complete)
+
+(defun ac-source-dabbrev (abbrev)
+  (interactive)
+  (dabbrev--reset-global-variables)
+  (let ((dabbrev-check-all-buffers t))
+    (sort (dabbrev--find-all-expansions abbrev t) #'string<)))
+
+(defun ac-source-dabbrev (abbrev)
+  (interactive)
+  (dabbrev--reset-global-variables)
+  (let ((dabbrev-check-all-buffers t))
+    (sort (dabbrev--find-all-expansions abbrev t) #'string)))
+
+(defvar ac-source-dabbrev-words
+  '((candidates
+     . (lambda () (all-completions ac-target
+                                   (ac-source-dabbrev ac-target)))))
+  "Get all the completions using dabbrev")
+
+(setq-default ac-sources '(ac-source-dabbrev-words ac-source-dictionary))
 
 
 ; auto-mode-alist
@@ -141,6 +163,8 @@
 		(function (lambda () (interactive)
 			    (insert "    ldstr \"xxx\"\n    call void [mscorlib]System.Console::WriteLine(string)\n"))))
 
+(require 'find-file-in-project)
+(global-set-key [(control x) (f)] 'find-file-in-project)
 
 
 ; command on regions
