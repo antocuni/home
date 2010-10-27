@@ -22,6 +22,7 @@
  '(scroll-preserve-screen-position t)
  '(tab-width 4)
  '(tool-bar-mode nil)
+ '(tramp-default-method "scpx")
  '(user-mail-address "anto.cuni@gmail.com")
  '(vc-follow-symlinks t)
  '(x-select-enable-clipboard t))
@@ -103,17 +104,14 @@
 (require 'dabbrev)
 (require 'auto-complete)
 
-(defun ac-source-dabbrev (abbrev)
-  (interactive)
-  (dabbrev--reset-global-variables)
-  (let ((dabbrev-check-all-buffers t))
-    (sort (dabbrev--find-all-expansions abbrev t) #'string<)))
+(setq ac-auto-start nil)
+(setq ac-trigger-key "TAB")
 
 (defun ac-source-dabbrev (abbrev)
   (interactive)
   (dabbrev--reset-global-variables)
   (let ((dabbrev-check-all-buffers t))
-    (sort (dabbrev--find-all-expansions abbrev t) #'string)))
+    (sort (dabbrev--find-all-expansions abbrev t) #'string<)))
 
 (defvar ac-source-dabbrev-words
   '((candidates
@@ -121,7 +119,7 @@
                                    (ac-source-dabbrev ac-target)))))
   "Get all the completions using dabbrev")
 
-(setq-default ac-sources '(ac-source-dabbrev-words ac-source-dictionary))
+(setq ac-default-sources '(ac-source-dabbrev-words ac-source-dictionary))
 
 ; =====================================
 ; popup the kill ring when pressing M-y
@@ -161,7 +159,9 @@
 (global-set-key [(control l)] 'font-lock-fontify-buffer)
 (global-set-key [(control c) (d)] 'kill-whole-line)
 (global-set-key [(control x) (g)] 'rgrep)
+(global-set-key [(control c) (r)] 'revert-buffer)
 (global-set-key (kbd "S-SPC") 'fixup-whitespace)
+
 
 (global-set-key [(control z)]
 		(function (lambda () (interactive) (set-mark-command 0))))
