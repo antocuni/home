@@ -160,7 +160,7 @@
 (global-set-key [(control c) (d)] 'kill-whole-line)
 (global-set-key [(control x) (g)] 'rgrep)
 (global-set-key [(control c) (r)] 'revert-buffer)
-(global-set-key (kbd "S-SPC") 'fixup-whitespace)
+;(global-set-key (kbd "S-SPC") 'fixup-whitespace)
 
 
 (global-set-key [(control z)]
