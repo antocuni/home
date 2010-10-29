@@ -15,7 +15,7 @@
  '(ispell-check-comments nil)
  '(menu-bar-mode window-system)
  '(rst-level-face-base-color "blackn")
- '(safe-local-variable-values (quote ((test-case-name . buildbot\.test\.test_twisted) (test-case-name . twisted\.web\.test\.test_static) (c-tab-always-indent) (c-continued-statement-offset . 2) (c-brace-offset . -2) (c-brace-imaginary-offset . 0) (c-argdecl-indent . 0) (c-label-offset . -2) (auto-revert-interval . 0.5) (auto-revert-interval . 0.2) (encoding . utf-8))))
+ '(safe-local-variable-values (quote ((test-case-name . twisted\.test\.test_internet\,twisted\.internet\.test\.test_posixbase) (test-case-name . buildbot\.test\.test_slavecommand) (test-case-name . buildbot\.test\.test_steps) (test-case-name . buildbot\.test\.test_vc) (test-case-name . twisted\.test\.test_log) (test-case-name . twisted\.test\.test_application\,twisted\.test\.test_twistd) (test-case-name . twisted\.test\.test_twistd) (test-case-name . buildbot\.test\.test_twisted) (test-case-name . twisted\.web\.test\.test_static) (c-tab-always-indent) (c-continued-statement-offset . 2) (c-brace-offset . -2) (c-brace-imaginary-offset . 0) (c-argdecl-indent . 0) (c-label-offset . -2) (auto-revert-interval . 0.5) (auto-revert-interval . 0.2) (encoding . utf-8))))
  '(scroll-bar-mode (quote right))
  '(scroll-conservatively 100000)
  '(scroll-margin 0)
