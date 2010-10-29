@@ -1,4 +1,12 @@
 [ui]
+username = Antonio Cuni <anto.cuni@gmail.com>
 editor = emacs -nw
-username = antocuni
 ignore = ~/.hgignore
+
+[extensions]
+convert = 
+transplant =
+hgext.graphlog = 
+mq = 
+hgk = 
+purge = 
