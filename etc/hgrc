@@ -3,10 +3,15 @@ username = Antonio Cuni <anto.cuni@gmail.com>
 editor = emacs -nw
 ignore = ~/.hgignore
 
+%include ~/Dropbox/hgrc.auth
+
 [extensions]
 convert = 
 transplant =
 hgext.graphlog = 
-mq = 
 hgk = 
 purge = 
+color = 
+attic = /home/antocuni/pypy/misc/hgattic/attic.py
+record =
+crecord = /home/antocuni/pypy/misc/crecord/crecord
