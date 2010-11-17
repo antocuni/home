@@ -1,3 +1,3 @@
 src/pdb = https://bitbucket.org/antocuni/pdb
 src/fancycompleter = https://bitbucket.org/antocuni/fancycompleter
-src/pyrepl = [svn]svn+ssh://codespeak.net/svn/pyrepl/trunk/pyrepl
+src/pyrepl = [svn]https://codespeak.net/svn/pyrepl/trunk/pyrepl
