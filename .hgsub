@@ -1,2 +1,2 @@
-pdb = https://bitbucket.org/antocuni/pdb
-fancycompleter = https://bitbucket.org/antocuni/fancycompleter
+src/pdb = https://bitbucket.org/antocuni/pdb
+src/fancycompleter = https://bitbucket.org/antocuni/fancycompleter
