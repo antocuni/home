@@ -16,6 +16,9 @@ def symlink(src, dst):
         link = os.readlink(dst)
         if link == src:
             return # nothing to do
+        if link.startswith('/home/antocuni/pypy/user/antocuni/'):
+            # old location, kill it
+            os.remove(dst)
     except OSError:
         pass
     os.symlink(src, dst)
@@ -41,7 +44,7 @@ def main():
         do_symlink(src, dst)
 
     more_links = [
-        ('~/pypy/user/antocuni/hack/pdbrc.py', '~/.pdbrc.py'),
+        ('~/env/src/pdb/pdbrc.py', '~/.pdbrc.py'),
         ]
     for src, dst in more_links:
         src = os.path.expanduser(src)

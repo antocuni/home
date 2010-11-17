@@ -19,35 +19,29 @@ export HISTCONTROL=ignoredups
 # ==========
 #    PATH
 # ==========
-PATH=~antocuni/pypy/trunk/py/bin:$PATH
-PATH=~antocuni/pypy/trunk/pypy/bin:$PATH
-PATH=~antocuni/pypy/trunk/pypy/translator/goal/:$PATH
-PATH=~antocuni/pypy/user/antocuni/bin/colorize/:~antocuni/pypy/user/antocuni/bin:$PATH
+PATH=~/pypy/trunk/py/bin:$PATH
+PATH=~/pypy/trunk/pypy/bin:$PATH
+PATH=~/pypy/trunk/pypy/translator/goal/:$PATH
+PATH=~/env/bin/colorize/:~/env/bin:$PATH
 export PATH
 
 if [ `hostname` == cobra ]
 then
-    PATH=~antocuni/usr/bin:$PATH
+    PATH=~/usr/bin:$PATH
 fi
 
 # ================
 #    PYTHONPATH
 # ================
-#PYTHONPATH=$PYTHONPATH:~antocuni/WebFormKit
-PYTHONPATH=~antocuni/pypy/trunk/
-PYTHONPATH=$PYTHONPATH:~antocuni/pypy/user/antocuni/
-PYTHONPATH=$PYTHONPATH:~antocuni/pypy/user/antocuni/hack/
-#PYTHONPATH=$PYTHONPATH:~antocuni/pypy/django/
-PYTHONPATH=$PYTHONPATH:~antocuni/pypy/misc/pg8000/
-#PYTHONPATH=$PYTHONPATH:~antocuni/pypy/misc/casalino-carta/
-PYTHONPATH=$PYTHONPATH:~antocuni/pypy/misc/execnet/
+PYTHONPATH=~/pypy/trunk/
+PYTHONPATH=$PYTHONPATH:~/pypy/user/antocuni/hack/
 export PYTHONPATH
 
 
 # ===================
 # python related vars
 # ===================
-export PYTHONSTARTUP=~antocuni/startup.py
+export PYTHONSTARTUP=~/startup.py
 #export PYMACS_PYTHON=/opt/python2.5/bin/python
 export PYPY_GENCLI_COPYIL="true"
 
