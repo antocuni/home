@@ -41,7 +41,7 @@ export PYTHONPATH
 # ===================
 # python related vars
 # ===================
-export PYTHONSTARTUP=~/startup.py
+export PYTHONSTARTUP=~/.startup.py
 #export PYMACS_PYTHON=/opt/python2.5/bin/python
 export PYPY_GENCLI_COPYIL="true"
 
