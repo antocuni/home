@@ -12,6 +12,6 @@ hgext.graphlog =
 hgk = 
 purge = 
 color = 
-attic = /home/antocuni/pypy/misc/hgattic/attic.py
+attic = /home/antocuni/env/src/hgattic/attic.py
 record =
 crecord = /home/antocuni/pypy/misc/crecord/crecord
