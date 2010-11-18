@@ -14,4 +14,4 @@ purge =
 color = 
 attic = /home/antocuni/env/src/hgattic/attic.py
 record =
-crecord = /home/antocuni/pypy/misc/crecord/crecord
+crecord = /home/antocuni/env/src/crecord/crecord
