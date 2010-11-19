@@ -34,7 +34,7 @@ fi
 #    PYTHONPATH
 # ================
 PYTHONPATH=~/pypy/trunk/
-PYTHONPATH=$PYTHONPATH:~/pypy/user/antocuni/hack/
+PYTHONPATH=$PYTHONPATH:~/env/pypath
 export PYTHONPATH
 
 

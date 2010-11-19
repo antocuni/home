@@ -57,15 +57,28 @@ def create_symlinks():
         do_symlink(src, dst)
 
 def install_py_packages():
-    orig_dir = os.getcwd()
     envdir = os.path.dirname(etc_dir)
-    pattern = os.path.join(envdir, 'src', '*', 'setup.py')
+    srcdir = os.path.join(envdir, 'src')
+    # these are already in pypath, and are available to both cpython and pypy
+    excludes = set([
+        os.path.join(srcdir, 'pdb', 'setup.py'),
+        os.path.join(srcdir, 'fancycompleter', 'setup.py')
+        ])
+    #
+    orig_dir = os.getcwd()
+    pattern = os.path.join(srcdir, '*', 'setup.py')
+    print
+    # this are available only to cpython
     for setup_py in glob.glob(pattern):
-        print
+        if setup_py in excludes:
+            print color('Ignoring %s' % setup_py, 32)
+            continue
         print color('Installing %s' % setup_py, 33)
         path = os.path.dirname(setup_py)
         os.chdir(path)
         os.system('python "%s" develop --user' % setup_py)
+        print ('python "%s" develop --user' % setup_py)
+        print
     os.chdir(orig_dir)
 
 if __name__ == '__main__':

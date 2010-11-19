@@ -1,0 +1,1 @@
+../src/fancycompleter/fancycompleter.py
