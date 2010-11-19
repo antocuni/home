@@ -425,6 +425,9 @@ the new line indented."
   (local-set-key "\C-c\C-c" 'my-rst2beamer-compile))
 (add-hook 'rst-mode-hook 'my-rst-ext)
 
+(defun restructuredtext-mode ()
+  (rst-mode))
+
 
 (add-hook 'doc-view-mode-hook 'auto-revert-mode)
 
