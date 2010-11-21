@@ -1,0 +1,3 @@
+#!/bin/bash
+
+IRONPYTHONPATH=/usr/lib/python2.6 mono -O=-branch /home/antocuni/IronPython-2.6/ipy.exe -X:TabCompletion "$@"
