@@ -62,7 +62,8 @@ def install_py_packages():
     # these are already in pypath, and are available to both cpython and pypy
     excludes = set([
         os.path.join(srcdir, 'pdb', 'setup.py'),
-        os.path.join(srcdir, 'fancycompleter', 'setup.py')
+        os.path.join(srcdir, 'fancycompleter', 'setup.py'),
+        os.path.join(srcdir, 'wmctrl', 'setup.py')
         ])
     #
     orig_dir = os.getcwd()

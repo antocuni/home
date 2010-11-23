@@ -1,5 +1,6 @@
 src/pdb = https://bitbucket.org/antocuni/pdb
 src/fancycompleter = https://bitbucket.org/antocuni/fancycompleter
+src/wmctrl = https://bitbucket.org/antocuni/wmctrl
 src/pyrepl = [svn]svn+ssh://codespeak.net/svn/pyrepl/trunk/pyrepl
 src/hgattic = https://bitbucket.org/Bill_Barry/hgattic
 src/crecord = https://bitbucket.org/edgimar/crecord
