@@ -34,6 +34,16 @@ function check()
     which $1 &> /dev/null 
 }
 
+function apt-get()
+{
+    if [ x$1 = xinstall ]
+    then
+        sudo /usr/bin/apt-get "$@"
+    else
+        /usr/bin/apt-get "$@"
+    fi
+}
+
 # change the default arguments of some commands
 alias ls="ls -F --color=auto -B -I '*.pyc' -I '*.pyo'"
 alias lls='/bin/ls --color=auto -F'
