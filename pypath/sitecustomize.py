@@ -1,8 +1,11 @@
 import sys
 
+def isatty(stream):
+    return hasattr(stream, 'isatty') and stream.isatty()
+
 def info(type, value, tb):
-    isatty = hasattr(sys.stderr, 'isatty') and sys.stderr.isatty()    
-    if (hasattr(sys, 'ps1') and 'pypy' not in sys.version) or not isatty or\
+    ontty = isatty(sys.stderr) and isatty(sys.stdout) and isatty(sys.stdin)
+    if hasattr(sys, 'ps1') or not ontty or\
             str(value) == 'underlying C/C++ object has been deleted':
         # You are in interactive mode or don't have a tty-like
         # device, so call the default hook
