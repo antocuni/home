@@ -1,2 +1,3 @@
 syntax: glob
 *.egg-info/
+src/Python-2.7.1
