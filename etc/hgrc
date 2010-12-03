@@ -15,3 +15,4 @@ color =
 attic = /home/antocuni/env/src/hgattic/attic.py
 record =
 crecord = /home/antocuni/env/src/crecord/crecord
+svnup = /home/antocuni/pypy/user/antocuni/hg-conversion/svnup.py
