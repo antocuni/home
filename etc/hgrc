@@ -16,3 +16,15 @@ attic = /home/antocuni/env/src/hgattic/attic.py
 record =
 crecord = /home/antocuni/env/src/crecord/crecord
 svnup = /home/antocuni/pypy/user/antocuni/hg-conversion/svnup.py
+mq=
+pager = 
+progress = 
+fetch = 
+hgbb = /home/antocuni/env/src/hgbb/hgbb.py
+
+[pager]
+pager = less
+
+[bb]
+username = antocuni
+default_method = https
