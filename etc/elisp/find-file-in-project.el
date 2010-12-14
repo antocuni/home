@@ -95,7 +95,7 @@ Use this to exclude portions of your project: \"-not -regex \\\".*vendor.*\\\"\"
 (defvar ffip-project-root nil
   "If non-nil, overrides the project root directory location.")
 
-(defvar ffip-project-file ".project-root"
+(defvar ffip-project-file ".hg"
   "What file should ffip look for to define a project?")
 
 
