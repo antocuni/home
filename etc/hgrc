@@ -19,11 +19,16 @@ svnup = /home/antocuni/pypy/user/antocuni/hg-conversion/svnup.py
 mq=
 pager = 
 progress = 
-fetch = 
+rebase = 
 hgbb = /home/antocuni/env/src/hgbb/hgbb.py
 
 [pager]
 pager = less
+
+[extdiff]
+cmd.meld = meld
+opts.meld =
+
 
 [bb]
 username = antocuni
