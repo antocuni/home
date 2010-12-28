@@ -399,9 +399,10 @@ the new line indented."
 ; run pdflatex
 ; ============
 
+
 (defun my-tex-compile ()
   (interactive)
-  (let ((cmd (concat "pdflatex thesis.tex"))); (tex-main-file))))
+  (let ((cmd (concat "pdflatex cv_antocuni.tex"))); (tex-main-file))))
     (if (= 0 (save-window-excursion
                (shell-command cmd "*Tex Command Output*")))
         (message "Ok")
@@ -431,7 +432,7 @@ the new line indented."
 
 
 (add-hook 'doc-view-mode-hook 'auto-revert-mode)
-
+(global-auto-revert-mode 1)
 
 ; Color theme for X window
 ; =======================
