@@ -19,6 +19,7 @@ export HISTCONTROL=ignoredups
 # ==========
 #    PATH
 # ==========
+PATH=~/.local/bin:$PATH
 PATH=~/pypy/trunk/py/bin:$PATH
 PATH=~/pypy/trunk/pypy/bin:$PATH
 PATH=~/pypy/trunk/pypy/translator/goal/:$PATH

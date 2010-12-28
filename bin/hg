@@ -1,12 +1,18 @@
 #!/bin/bash
 
+# remove the current dir from the PATH
+OLDPATH=$PATH
+PATH=$(echo $PATH | sed s,$(dirname $0):,,g)
+HG=`which hg`
+PATH=$OLDPATH
+
 case $1 in
     diff)     
         if [ -z $EMACS ] && isatty
         then
-            /usr/bin/hg "$@" | diffpipe.py | less 
+            $HG "$@" | diffpipe.py | less 
         else
-            /usr/bin/hg "$@"
+            $HG "$@"
         fi ;;
-    *)        /usr/bin/hg "$@" ;;
+    *)        $HG "$@" ;;
 esac
