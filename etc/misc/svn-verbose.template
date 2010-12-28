@@ -1,0 +1,6 @@
+[00;32mr{rev} [00;33m{node|short}[0m [01;31m{branches}[0m | {author|user} | {date|isodate}
+
+{files}
+{desc|strip|fill76}
+
+------------------------------------------------------------------------

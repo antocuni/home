@@ -1,0 +1,8 @@
+header = '------------------------------------------------------------------------\n'
+header_quiet = ""
+
+changeset = svn.template
+changeset_verbose = svn-verbose.template
+changeset_quiet = svn-quiet.template
+
+file = "    [01m{file}[0m\n"
