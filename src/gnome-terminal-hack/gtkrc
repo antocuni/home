@@ -1,0 +1,6 @@
+style "theme-notebook"
+{
+    bg[NORMAL] = "#F0B67A" # selected tab
+}
+
+class "GtkNotebook" style "theme-notebook"
