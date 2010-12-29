@@ -10,6 +10,7 @@ XTerm*font:                 -monotype-courier new-semilight-r-normal-*-17-120-*-
 XTerm*color4:               #0000FF
 XTerm*color7:               #AAAAAA
 XTerm*color12:              #3333FF
+XTerm*termName:  xterm-256color
 
 # these apply only to rxvt, but not to autorxvt
 rxvt*geometry:              91x35
