@@ -119,6 +119,16 @@ unset U
 unset HCOL
 
 
+# ==============
+# 256 color term
+# ==============
+
+if [ "x$TERM" = "xxterm" -a "x$COLORTERM" = "xgnome-terminal" ]
+then
+    export TERM="xterm-256color"
+fi
+
+
 # ===========
 #    PATHS
 # ===========
