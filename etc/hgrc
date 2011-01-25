@@ -3,6 +3,7 @@ username = Antonio Cuni <anto.cuni@gmail.com>
 editor = emacs -nw
 ignore = ~/.hgignore
 style= /home/antocuni/env/etc/misc/svn.style
+merge = internal:merge
 
 %include /home/antocuni/Dropbox/hgrc.auth
 
