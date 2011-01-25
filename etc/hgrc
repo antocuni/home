@@ -30,7 +30,9 @@ pager = less
 cmd.meld = meld
 opts.meld =
 
-
 [bb]
 username = antocuni
 default_method = https
+
+[web]
+cacerts = /etc/ssl/certs/ca-certificates.crt
