@@ -29,6 +29,7 @@ TERM rxvt
 TERM ansi
 TERM Eterm
 TERM screen
+TERM xterm-256color
 
 # EIGHTBIT, followed by '1' for on, '0' for off. (8-bit output)
 EIGHTBIT 1

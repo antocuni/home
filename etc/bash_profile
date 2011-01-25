@@ -49,6 +49,7 @@ export PYPY_GENCLI_COPYIL="true"
 # ================
 #    misc vars
 # ================
+export IGNOREEOF=10
 export LESS="-R $LESS"
 export FIGNORE='~'
 export BROWSER="firefox:mozilla"
@@ -56,6 +57,8 @@ export SVN_EDITOR="emacs -nw"
 export EDITOR="emacs -nw"
 export CLASSPATH=$CLASSPATH:/opt/j2sdk1.4.0_02/JMF-2.1.1e/lib/jmf.jar
 export IPOD_MOUNTPOINT=/mnt/usb
+export MAKEFLAGS="-j2"
+unset GTK2_RC_FILES # this is set by ~/bin/autoterm
 
 
 # Get the aliases and functions
