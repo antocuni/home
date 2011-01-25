@@ -396,6 +396,36 @@ the new line indented."
     (message "Sum: %f" sum)))
 
 
+; re-open the current file as root
+; =================================
+
+(defun toggle-alternate-file-as-root (&optional filename)
+  "Toggle between the current file as the default user and as root."
+  (interactive)
+  (let* ((filename (or filename (buffer-file-name)))
+         (parsed (when (tramp-tramp-file-p filename)
+                   (coerce (tramp-dissect-file-name filename)
+                           'list))))
+    (unless filename
+      (error "No file in this buffer."))
+
+    (find-alternate-file
+     (if (equal '("sudo" "root") (butlast parsed 2))
+         ;; As non-root
+         (if (or
+              (string= "localhost" (nth 2 parsed))
+              (string= (system-name) (nth 2 parsed)))
+             (nth -1 parsed)
+           (apply 'tramp-make-tramp-file-name
+                  (append (list tramp-default-method nil) (cddr parsed))))
+
+       ;; As root
+       (if parsed
+           (apply 'tramp-make-tramp-file-name
+                  (append '("sudo" "root") (cddr parsed)))
+         (tramp-make-tramp-file-name "sudo" "root" "localhost" filename))))))
+
+
 ; run pdflatex
 ; ============
 
