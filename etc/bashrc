@@ -66,7 +66,7 @@ if [ `hostname` == viper ]
 then
     #alias python2.5='/opt/python2.5/bin/python'
     alias pythonnet='mono /home/antocuni/opt/pythonnet2/python.exe'
-    alias pywin='PYTHONPATH= wine /home/antocuni/.wine/drive_c/Python25/python.exe'
+    alias pywin='PYTHONPATH= wine /home/antocuni/.wine/drive_c/Python27/python.exe'
     alias py.test.net='pythonnet `which py.test`'
     alias py.test.net.hack='mono /home/antocuni/opt/pythonnet2-hacked/python.exe `which py.test`'
     alias py.test2.5='python2.5 `which py.test`'
