@@ -37,7 +37,7 @@ function check()
 function apt-get()
 {
     case x$1 in
-        xinstall|xupdate|xupgrade)
+        xinstall|xupdate|xupgrade|xdist-upgrade)
             sudo /usr/bin/apt-get "$@"
             ;;
         *)

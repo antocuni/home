@@ -147,7 +147,7 @@ function preexec_xterm_title_install () {
 
     function precmd () {
         WD=`dirs -0`
-        WD=`echo $WD | sed 's:~/pypy/\(.*\)/pypy:\1/pypy:'`
+        WD=`echo $WD | sed 's:~/pypy/\(.*\):\1:'`
         WD=${WD/trunk\/pypy/pypy}
         preexec_xterm_title "${HOST}${USER/antocuni/} $WD $PROMPTCHAR"
         if [[ "$TERM" == screen ]]

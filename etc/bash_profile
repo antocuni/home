@@ -20,9 +20,9 @@ export HISTCONTROL=ignoredups
 #    PATH
 # ==========
 PATH=~/.local/bin:$PATH
-PATH=~/pypy/trunk/py/bin:$PATH
-PATH=~/pypy/trunk/pypy/bin:$PATH
-PATH=~/pypy/trunk/pypy/translator/goal/:$PATH
+PATH=~/pypy/default/py/bin:$PATH
+PATH=~/pypy/default/pypy/bin:$PATH
+PATH=~/pypy/default/pypy/translator/goal/:$PATH
 PATH=~/env/bin/colorize/:~/env/bin:$PATH
 export PATH
 
@@ -34,7 +34,7 @@ fi
 # ================
 #    PYTHONPATH
 # ================
-PYTHONPATH=~/pypy/trunk/
+PYTHONPATH=~/pypy/default/
 PYTHONPATH=$PYTHONPATH:~/env/pypath
 export PYTHONPATH
 

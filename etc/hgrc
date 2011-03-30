@@ -24,6 +24,7 @@ pager =
 progress = 
 rebase = 
 hgbb = /home/antocuni/env/src/hgbb/hgbb.py
+activity=/tmp/Hgactivity/activity.py
 
 [pager]
 pager = less
