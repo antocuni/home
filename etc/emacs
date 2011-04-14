@@ -66,7 +66,7 @@
 ; =======================
 
 (setq load-path (cons "/home/antocuni/env/etc/elisp" load-path))
-(setq load-path (cons "/home/antocuni/pypy/trunk/pypy/jit/tool" load-path))
+(setq load-path (cons "/home/antocuni/pypy/default/pypy/jit/tool" load-path))
 (setq minibuffer-max-depth nil)
 (setq font-lock-auto-fontify 1)
 ;(set-default-font "-Adobe-Courier-Medium-R-Normal--18-180-75-75-M-110-ISO8859-1")
@@ -544,6 +544,32 @@ Optional arg REVISION is a revision to annotate from."
   (save-excursion
     (beginning-of-line)
     (when (looking-at my-vc-hg-annotate-re) (match-string-no-properties 0))))
+
+; ==============================
+; my hack to get bitbucket links
+; ==============================
+
+(defun bitbucket-link-to-line ()
+  (interactive)
+  (let*
+      ((status nil)
+       (out
+        (with-output-to-string
+          (with-current-buffer
+              standard-output
+            (setq status
+                  (condition-case nil
+                      ;; Ignore all errors.
+                      (call-process
+                       "hg" nil t nil "--cwd" (file-name-directory file)
+                       "bblink" (file-name-nondirectory file))
+                    ;; Some problem happened.  E.g. We can't find an `hg'
+                    ;; executable.
+                    (error nil)))))))
+    (message status)))
+
+
+
 
 
 ; Color theme for X window

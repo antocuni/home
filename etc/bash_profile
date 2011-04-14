@@ -46,6 +46,11 @@ export PYTHONSTARTUP=~/.startup.py
 #export PYMACS_PYTHON=/opt/python2.5/bin/python
 export PYPY_GENCLI_COPYIL="true"
 
+# ===================
+# java vars
+# ===================
+export CLASSPATH=$CLASSPATH:/usr/share/java/activation.jar:/usr/share/java/asm-analysis.jar:/usr/share/java/asm-attrs.jar:/usr/share/java/asm.jar:/usr/share/java/asm-tree.jar:/usr/share/java/asm-util.jar:/usr/share/java/asm-xml.jar:/usr/share/java/bcmail.jar:/usr/share/java/bcprov.jar:/usr/share/java/gnome-java-bridge.jar:/usr/share/java/gnumail.jar:/usr/share/java/gnumail-providers.jar:/usr/share/java/hsqldb.jar:/usr/share/java/hsqldbutil.jar:/usr/share/java/inetlib.jar:/usr/share/java/itext.jar:/usr/share/java/kasm.jar:/usr/share/java/libintl.jar
+
 # ================
 #    misc vars
 # ================
@@ -55,7 +60,6 @@ export FIGNORE='~'
 export BROWSER="firefox:mozilla"
 export SVN_EDITOR="emacs -nw"
 export EDITOR="emacs -nw"
-export CLASSPATH=$CLASSPATH:/opt/j2sdk1.4.0_02/JMF-2.1.1e/lib/jmf.jar
 export IPOD_MOUNTPOINT=/mnt/usb
 export MAKEFLAGS="-j2"
 unset GTK2_RC_FILES # this is set by ~/bin/autoterm
