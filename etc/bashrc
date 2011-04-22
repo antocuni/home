@@ -169,6 +169,7 @@ then
     preexec_xterm_title_install
 fi
 
+unset GTK2_RC_FILES
 
 # =======================
 #    virtualenvwrapper
