@@ -903,3 +903,5 @@ Optional arg REVISION is a revision to annotate from."
        'dired-mode-hook
        (lambda ()
          (local-set-key "z" 'emms-play-dired)))))
+
+(put 'narrow-to-region 'disabled nil)
