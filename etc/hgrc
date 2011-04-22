@@ -39,3 +39,13 @@ default_method = https
 
 [web]
 cacerts = /etc/ssl/certs/ca-certificates.crt
+
+[color]
+diff.diffline = black cyan_background
+diff.extended = cyan bold
+diff.file_a = white
+diff.file_b = yellow bold
+diff.hunk = none
+diff.deleted = white
+diff.inserted = yellow bold
+diff.trailingwhitespace = bold red_background
