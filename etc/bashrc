@@ -57,6 +57,8 @@ alias mcd='mount /mnt/cdrom'
 alias ucd='umount /mnt/cdrom'
 alias musb='mount /mnt/usb'
 alias uusb='umount /mnt/usb'
+alias mpod='mount /mnt/ipod'
+alias upod='umount /mnt/ipod'
 [ -d ~/pypy/user/arigo ] && alias rm="~/pypy/user/arigo/hack/bin/atomic_rm.py"
 alias fs="dropbox filestatus ~/Dropbox/antocuni/{.mozilla,.thunderbird}"
 
