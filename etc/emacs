@@ -506,6 +506,10 @@ the new line indented."
 ; customize vc-hg.el
 ; =======================================================
 
+(require 'vc-hg)
+(require 'vc-annotate)
+(require 'ansi-color)
+
 ;; change the output of vc-annotate: I don't care for the date, but I want the
 ;; username
 
@@ -525,6 +529,9 @@ Optional arg REVISION is a revision to annotate from."
   (save-excursion
     (beginning-of-line)
     (when (looking-at my-vc-hg-annotate-re) (match-string-no-properties 2))))
+
+;; add a new "s" keybiding to annotate and log, which shows both the log
+;; message and the diff
 
 (defun my-vc-hg-show-commit (revision)
   (let ((buffer "*vc show*"))
