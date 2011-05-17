@@ -58,6 +58,7 @@
  '(rst-level-2-face ((t (:foreground "#F55"))) t)
  '(underline ((((supports :underline t)) (:slant italic)))))
 
+(put 'narrow-to-region 'disabled nil)
 
 ; ***********************
 ; Manually edited section
@@ -505,29 +506,6 @@ the new line indented."
 ; workaround for a bug in vc-hg.el (as of version 23.1.1)
 ; =======================================================
 
-(defun vc-hg-working-revision (file)
-  "Hg-specific version of `vc-working-revision'."
-  (let*
-      ((status nil)
-       (out
-	(with-output-to-string
-	  (with-current-buffer
-	      standard-output
-	    (setq status
-		  (condition-case nil
-		      ;; Ignore all errors.
-              ;; XXX by antocuni: explicitly set the log style to default
-		      (call-process
-		       "hg" nil t nil "--cwd" (file-name-directory file)
-		       "log" "--style" "default" "-l1" (file-name-nondirectory file))
-		    ;; Some problem happened.  E.g. We can't find an `hg'
-		    ;; executable.
-		    (error nil)))))))
-    (when (eq 0 status)
-      (if (string-match "changeset: *\\([0-9]*\\)" out)
-	  (match-string 1 out)
-	"0"))))
-
 ;; change the output of vc-annotate: I don't care for the date, but I want the
 ;; username
 
@@ -538,7 +516,7 @@ Optional arg REVISION is a revision to annotate from."
 		 (when revision (concat "-r" revision))))
 
 (defconst my-vc-hg-annotate-re
-  "^[ \t]*\\(.*\\) [0-9]*:")
+  "^[ \t]*\\([A-Za-z]+\\) +\\([0-9]+\\):")
 
 (defun vc-hg-annotate-time ()
   (vc-hg-annotate-extract-revision-at-line))
@@ -547,7 +525,7 @@ Optional arg REVISION is a revision to annotate from."
   (interactive)
   (save-excursion
     (beginning-of-line)
-    (when (looking-at my-vc-hg-annotate-re) (match-string-no-properties 0))))
+    (when (looking-at my-vc-hg-annotate-re) (match-string-no-properties 2))))
 
 ; ==============================
 ; my hack to get bitbucket links
@@ -907,5 +885,3 @@ Optional arg REVISION is a revision to annotate from."
        'dired-mode-hook
        (lambda ()
          (local-set-key "z" 'emms-play-dired)))))
-
-(put 'narrow-to-region 'disabled nil)
