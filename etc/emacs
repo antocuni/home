@@ -503,7 +503,7 @@ the new line indented."
 (global-auto-revert-mode 1)
 
 ; =======================================================
-; workaround for a bug in vc-hg.el (as of version 23.1.1)
+; customize vc-hg.el
 ; =======================================================
 
 ;; change the output of vc-annotate: I don't care for the date, but I want the
@@ -519,13 +519,36 @@ Optional arg REVISION is a revision to annotate from."
   "^[ \t]*\\([A-Za-z]+\\) +\\([0-9]+\\):")
 
 (defun vc-hg-annotate-time ()
-  (vc-hg-annotate-extract-revision-at-line))
+  (vc-hg-annotate-extract-revision-at-line)) ; XXX broken
 
 (defun vc-hg-annotate-extract-revision-at-line ()
-  (interactive)
   (save-excursion
     (beginning-of-line)
     (when (looking-at my-vc-hg-annotate-re) (match-string-no-properties 2))))
+
+(defun my-vc-hg-show-commit (revision)
+  (let ((buffer "*vc show*"))
+    (switch-to-buffer buffer)
+    (setq buffer-read-only nil)
+    (delete-region (point-min) (point-max))
+    (vc-hg-command buffer 0 "" "log" "-pr" revision)
+    (diff-mode)
+    (ansi-color-apply-on-region 0 (buffer-size))
+    (goto-line 0)
+    (setq buffer-read-only t)
+    (set-buffer-modified-p nil)
+    ))
+
+(defun my-vc-hg-show-commit-at-line ()
+  (interactive)
+  (if (not (equal major-mode 'vc-annotate-mode))
+      (message "Cannot be invoked outside of a vc annotate buffer")
+    (let* ((rev-at-line (vc-annotate-extract-revision-at-line))
+           (rev (car rev-at-line)))
+      (if (not rev-at-line)
+          (message "Cannot extract revision number from the current line")
+        (my-vc-hg-show-commit rev)))))
+
 
 ; ==============================
 ; my hack to get bitbucket links
