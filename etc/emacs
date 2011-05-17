@@ -538,7 +538,7 @@ Optional arg REVISION is a revision to annotate from."
     (switch-to-buffer buffer)
     (setq buffer-read-only nil)
     (delete-region (point-min) (point-max))
-    (vc-hg-command buffer 0 "" "log" "-pr" revision)
+    (vc-hg-command buffer 0 "" "log" "-vpr" revision)
     (diff-mode)
     (ansi-color-apply-on-region 0 (buffer-size))
     (goto-line 0)
