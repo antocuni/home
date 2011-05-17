@@ -535,15 +535,14 @@ Optional arg REVISION is a revision to annotate from."
 
 (defun my-vc-hg-show-commit (revision)
   (let ((buffer "*vc show*"))
-    (switch-to-buffer buffer)
-    (setq buffer-read-only nil)
-    (delete-region (point-min) (point-max))
+    (vc-setup-buffer buffer)
     (vc-hg-command buffer 0 "" "log" "-vpr" revision)
     (diff-mode)
     (ansi-color-apply-on-region 0 (buffer-size))
     (goto-line 0)
     (setq buffer-read-only t)
     (set-buffer-modified-p nil)
+    (switch-to-buffer buffer)
     ))
 
 (defun my-vc-hg-annotate-show-commit-at-line ()
