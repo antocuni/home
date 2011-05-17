@@ -539,7 +539,7 @@ Optional arg REVISION is a revision to annotate from."
     (set-buffer-modified-p nil)
     ))
 
-(defun my-vc-hg-show-commit-at-line ()
+(defun my-vc-hg-annotate-show-commit-at-line ()
   (interactive)
   (if (not (equal major-mode 'vc-annotate-mode))
       (message "Cannot be invoked outside of a vc annotate buffer")
@@ -548,6 +548,20 @@ Optional arg REVISION is a revision to annotate from."
       (if (not rev-at-line)
           (message "Cannot extract revision number from the current line")
         (my-vc-hg-show-commit rev)))))
+
+
+(defun my-vc-hg-log-show-commit-at-line ()
+  (interactive)
+  (if (not (equal major-mode 'vc-hg-log-view-mode))
+      (message "Cannot be invoked outside of a vc log buffer")
+    (let* ((rev (log-view-current-tag)))
+      (if (not rev)
+          (message "Cannot extract revision number from the current line")
+        (my-vc-hg-show-commit rev)))))
+
+
+(define-key vc-annotate-mode-map "s" 'my-vc-hg-annotate-show-commit-at-line)
+(define-key vc-hg-log-view-mode-map "s" 'my-vc-hg-log-show-commit-at-line)
 
 
 ; ==============================
