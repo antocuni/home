@@ -26,7 +26,7 @@
  '(tramp-default-method "scpx")
  '(user-mail-address "anto.cuni@gmail.com")
  '(vc-follow-symlinks t)
- '(vc-hg-log-switches (quote ("--style" "default")))
+ '(vc-hg-log-switches nil)
  '(x-select-enable-clipboard t))
 
 (custom-set-faces
@@ -569,6 +569,14 @@ Optional arg REVISION is a revision to annotate from."
 
 (define-key vc-annotate-mode-map "s" 'my-vc-hg-annotate-show-commit-at-line)
 (define-key vc-hg-log-view-mode-map "s" 'my-vc-hg-log-show-commit-at-line)
+
+; colorize the output of hg log view ansi-color, because my style uses them
+(defun my-hg-log-view-mode-hook ()
+  (set (make-local-variable 'log-view-message-re)
+       "^r\\([0-9]+\\) [a-z0-9]*  |")
+  (ansi-color-apply-on-region 0 (buffer-size)))
+
+(add-hook 'vc-hg-log-view-mode-hook 'my-hg-log-view-mode-hook)
 
 
 ; ==============================
