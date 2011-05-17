@@ -41,7 +41,7 @@ default_method = https
 cacerts = /etc/ssl/certs/ca-certificates.crt
 
 [color]
-diff.diffline = black cyan_background
+#diff.diffline = black cyan_background
 diff.extended = cyan bold
 diff.file_a = white
 diff.file_b = yellow bold
