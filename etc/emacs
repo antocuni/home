@@ -517,7 +517,13 @@ the new line indented."
   "Execute \"hg annotate\" on FILE, inserting the contents in BUFFER.
 Optional arg REVISION is a revision to annotate from."
   (vc-hg-command buffer 0 file "annotate" "-u" "-n"
-		 (when revision (concat "-r" revision))))
+		 (when revision (concat "-r" revision)))
+  (switch-to-buffer buffer)
+  (shell-command-on-region (point-min) (point-max) "blamepipe.py" buffer t)
+  (ansi-color-apply-on-region (point-min) (point-max))
+  (deactivate-mark))
+  
+
 
 (defconst my-vc-hg-annotate-re
   "^[ \t]*\\([A-Za-z]+\\) +\\([0-9]+\\):")
