@@ -62,7 +62,7 @@ def main():
         ## cmd = 'svn show --rev %s "%s"' % (rev, wcpath)
         ## cmd = rxvtlib.command_in_term(cmd)
         
-        rev = cycle(rev, rev2color, bg=1)
+        rev = cycle(rev, rev2color, bg=0)
         ## rev = rxvtlib.format_command(rev, cmd, force=True)
         author = cycle(author, author2color, bg=0)
         sys.stdout.write('%s%s%s\n' % (rev, author, text))
