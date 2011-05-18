@@ -398,9 +398,9 @@ the new line indented."
 ; Shell mode extensions
 ; =======================
 
-(setq ansi-color-names-vector ; better contrast colors
-      ["black" "red4" "green4" "yellow4"
-       "blue3" "magenta4" "cyan4" "white"])
+;; (setq ansi-color-names-vector ; better contrast colors
+;;       ["black" "red4" "green4" "yellow4"
+;;        "blue3" "magenta4" "cyan4" "white"])
 (add-hook 'shell-mode-hook 'ansi-color-for-comint-mode-on)
 (setq comint-prompt-read-only t)
 
@@ -529,8 +529,10 @@ Optional arg REVISION is a revision to annotate from."
 (defconst my-vc-hg-annotate-re
   "^[ \t]*\\([A-Za-z]+\\) +\\([0-9]+\\):")
 
-(defun vc-hg-annotate-time ()
-  0)
+;; disable coloring based on the timestamp
+(defun vc-hg-annotate-time () 0)
+(defconst vc-annotate-font-lock-keywords ())
+
 
 (defun vc-hg-annotate-extract-revision-at-line ()
   (save-excursion
@@ -579,10 +581,11 @@ Optional arg REVISION is a revision to annotate from."
 ; colorize the output of hg log view ansi-color, because my style uses them
 (defun my-hg-log-view-mode-hook ()
   (set (make-local-variable 'log-view-message-re)
-       "^r\\([0-9]+\\) [a-z0-9]*  |")
+       "^r\\([0-9]+\\) [a-z0-9]\\{12\\} ")
   (ansi-color-apply-on-region 0 (buffer-size)))
 
 (add-hook 'vc-hg-log-view-mode-hook 'my-hg-log-view-mode-hook)
+
 
 
 ; ==============================
@@ -607,8 +610,6 @@ Optional arg REVISION is a revision to annotate from."
                     ;; executable.
                     (error nil)))))))
     (message status)))
-
-
 
 
 
