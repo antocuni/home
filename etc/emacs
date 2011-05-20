@@ -586,6 +586,17 @@ Optional arg REVISION is a revision to annotate from."
 
 (add-hook 'vc-hg-log-view-mode-hook 'my-hg-log-view-mode-hook)
 
+;; hide untracked files inside vc-dir
+
+(defun vc-hg-dir-status (dir update-function)
+  (vc-hg-command (current-buffer) 'async dir "status" "-C" "-q")
+  (vc-exec-after
+   `(vc-hg-after-dir-status (quote ,update-function))))
+
+(defun vc-hg-dir-status-files (dir files default-state update-function)
+  (apply 'vc-hg-command (current-buffer) 'async dir "status" "-C" "-q" files)
+  (vc-exec-after
+   `(vc-hg-after-dir-status (quote ,update-function))))
 
 
 ; ==============================
