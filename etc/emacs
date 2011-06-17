@@ -598,6 +598,7 @@ Optional arg REVISION is a revision to annotate from."
   (vc-exec-after
    `(vc-hg-after-dir-status (quote ,update-function))))
 
+(setq vc-log-short-style nil) ;; always show a normal log, never a short one
 
 ; ==============================
 ; my hack to get bitbucket links
@@ -662,6 +663,7 @@ Optional arg REVISION is a revision to annotate from."
      (buffers-tab ((t (:background "black" :foreground "white"))))
      (button ((t (:underline t))))
      (calendar-today-face ((t (:foreground "white" :underline t))))
+     (comint-highlight-prompt ((t (:foreground "brightblue"))))
      (completions-common-part ((t (:stipple nil :background "unspecified-bg" :foreground "unspecified-fg" :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 1 :width normal :family "default"))))
      (completions-first-difference ((t (:background "black" :foreground "white" :underline t))))
      (cperl-array-face ((t (:foreground "darkseagreen"))))
@@ -829,7 +831,7 @@ Optional arg REVISION is a revision to annotate from."
      (message-header-xheader-face ((t (:foreground "sky blue"))))
      (message-mml-face ((t (:bold t :foreground "khaki" :weight bold))))
      (message-separator-face ((t (:background "aquamarine" :foreground "black"))))
-     (minibuffer-prompt ((t (:foreground "medium blue"))))
+     (minibuffer-prompt ((t (:foreground "brightblue"))))
      (mode-line ((t (:background "dark gray" :foreground "black"))))
      (mode-line-buffer-id ((t (:background "dark gray" :foreground "black"))))
      (mode-line-highlight ((t (:background "blue" :foreground "yellow"))))

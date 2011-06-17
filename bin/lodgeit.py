@@ -175,7 +175,7 @@ def get_mimetype(data, filename):
 
 def print_languages():
     xmlrpc = get_xmlrpc_service()
-    languages = xmlrpc.pastes.getLanguages()
+    languages = xmlrpc.pastes.getLanguages().items()
     languages.sort(lambda a, b: cmp(a[1].lower(), b[1].lower()))
     print 'Supported Languages:'
     for alias, name in languages:

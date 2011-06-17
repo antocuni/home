@@ -33,6 +33,9 @@ pager = less
 cmd.meld = meld
 opts.meld =
 
+[diff]
+git = True
+
 [bb]
 username = antocuni
 default_method = https

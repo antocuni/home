@@ -146,7 +146,7 @@ class BeamerTranslator (LaTeXTranslator):
 
         def begin_frametag (self, node):
                 if "verbatim" in str(node).lower():
-                    return '\\begin{frame}[containsverbatim]\n'
+                    return '\\begin{frame}[containsverbatim,fragile]\n'
                 else:
                     return '\\begin{frame}\n'
 
