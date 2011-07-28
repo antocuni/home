@@ -51,4 +51,4 @@ diff.file_b = yellow bold
 diff.hunk = none
 diff.deleted = white
 diff.inserted = yellow bold
-diff.trailingwhitespace = bold red_background
+diff.trailingwhitespace = white

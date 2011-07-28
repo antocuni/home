@@ -1,2 +1,2 @@
 import fancycompleter
-fancycompleter.interact()
+fancycompleter.interact(persist_history=True)
