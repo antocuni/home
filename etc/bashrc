@@ -216,3 +216,8 @@ case $0 in
         ;;
 esac
 
+# ==========================
+#    Needed for Adobe AIR
+# ==========================
+
+##export GNOME_DESKTOP_SESSION_ID="whatever"
