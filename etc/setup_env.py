@@ -5,7 +5,7 @@ import glob
 
 home = os.path.expanduser('~')
 etc_dir = os.path.dirname(os.path.abspath(__file__))
-excludes = ['create_symlinks.py', 'scripts', 'elisp']
+excludes = ['create_symlinks.py', 'scripts', 'elisp', 'gtk-3.0']
 
 def color(s, fg=1, bg=1):
     template = '\033[%02d;%02dm%s\033[0m'
@@ -50,6 +50,7 @@ def create_symlinks():
         ('~/env/src/pdb/pdbrc.py', '~/.pdbrc.py'),
         ('~/env/bin', '~/bin'),
         ('~/env/src', '~/src'),
+        ('~/env/etc/gtk-3.0', '~/.config/gtk-3.0'),
         ]
     for src, dst in more_links:
         src = os.path.expanduser(src)
