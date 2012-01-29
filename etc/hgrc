@@ -1,6 +1,6 @@
 [ui]
 username = Antonio Cuni <anto.cuni@gmail.com>
-editor = emacs -nw
+editor = emacsclient -nw
 ignore = ~/.hgignore
 style= /home/antocuni/env/etc/misc/svn.style
 merge = internal:merge
@@ -25,6 +25,7 @@ pager =
 progress = 
 rebase = 
 hgbb = /home/antocuni/env/src/hgbb/hgbb.py
+share=
 #activity=/tmp/Hgactivity/activity.py
 
 [pager]
