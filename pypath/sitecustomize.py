@@ -20,5 +20,6 @@ def info(type, value, tb):
         pdb.pm()
 
 
-sys.excepthook = info
+if sys.version_info < (3, 0):
+    sys.excepthook = info
 
