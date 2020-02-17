@@ -33,16 +33,16 @@ keysym backslash = backslash bar masculine ordfeminine
 !keycode 116 = Super_R
 
 ! we want to use the right one as a hotkey, not as a modifier
-keysym Super_R = XF86Messenger
+!keysym Super_R = XF86Messenger
 
 ! **********************
 ! Swap CapsLock and Ctrl
 ! **********************
 ! assign XF86Memo to the caps lock key, and make the '<' key another control
-clear Lock
-keycode 94 = Control_L
-keycode 66 = XF86Memo
-add Control = Control_L
+!clear Lock
+!keycode 94 = Control_L
+!keycode 66 = XF86Memo
+!add Control = Control_L
 
 
 

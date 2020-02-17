@@ -31,19 +31,34 @@ fi
 
 function check()
 {
-    which $1 &> /dev/null 
+    which $1 &> /dev/null
 }
 
-function apt-get()
+function apt()
 {
     case x$1 in
-        xinstall|xupdate|xupgrade|xdist-upgrade)
-            sudo /usr/bin/apt-get "$@"
+        xinstall|xupdate|xupgrade|xdist-upgrade|xremove|xautoremove|xpurge)
+            sudo /usr/bin/apt "$@"
             ;;
         *)
-            /usr/bin/apt-get "$@"
+            /usr/bin/apt "$@"
             ;;
     esac
+}
+
+function ssh-add()
+{
+    SSH_ADD=/usr/bin/ssh-add
+    if [ $# -eq 0 ]
+    then
+        $SSH_ADD
+        $SSH_ADD ~/.ssh/*.id_rsa
+        echo
+        echo Current identities:
+        $SSH_ADD -l
+    else
+        $SSH_ADD "$@"
+    fi
 }
 
 function auto-ssh-agent()
@@ -69,7 +84,7 @@ function auto-ssh-agent()
 gdbem () { emacs -nw --eval "(gdb \"gdb --cd=`pwd` --annotate=3 $*\")";}
 
 # "cd to eMacs directory"
-alias cdm='cd $(emacsclient -e "(with-current-buffer (window-buffer (frame-selected-window)) default-directory)" | '"sed -E 's/(^\")|(\"$)//g')" 
+alias cdm='cd $(emacsclient -e "(with-current-buffer (window-buffer (frame-selected-window)) default-directory)" | '"sed -E 's/(^\")|(\"$)//g')"
 
 # change the default arguments of some commands
 alias ls="ls -F --color=auto -B -I '*.pyc' -I '*.pyo' -N"
@@ -78,10 +93,10 @@ alias findpy="find ./ -name '*.py'"
 check pydf && alias df='pydf'
 check monodoc && alias monodoc='/usr/bin/monodoc > /dev/null 2>&1 &'
 
-alias pypy="/extra/pypy/latest/bin/pypy"
-
 alias dmesg="dmesg --human"
 alias ddmesg="/bin/dmesg"
+
+alias xs='xdg-open'
 
 #alias hg="/usr/bin/python -s -E `which hg`" # else hg it's awfully slow to start
 alias mcd='mount /mnt/cdrom'
@@ -198,6 +213,15 @@ then
     export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:$ROOTSYS/lib"
 fi
 
+ANDROID=/extra/android/android-sdk-linux_x86/
+export PATH="$PATH:$ANDROID/platform-tools/"
+
+if [ -d ~/pypy/misc/root ]
+then
+    export ROOTSYS="/home/antocuni/pypy/misc/root"
+    export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:$ROOTSYS/lib"
+fi
+
 
 # =============================
 #    dircolors & xterm title
@@ -218,15 +242,16 @@ fi
 
 unset GTK2_RC_FILES
 
+
 # =======================
 #    virtualenvwrapper
 # =======================
 
-if [ -f /usr/local/bin/virtualenvwrapper.sh ]
-then 
-    export WORKON_HOME=~/Envs
+if [ -f ~/.local/bin/virtualenvwrapper.sh ]
+then
+    export WORKON_HOME=~/.virtualenvs
     mkdir -p $WORKON_HOME
-    source /usr/local/bin/virtualenvwrapper.sh
+    source ~/.local/bin/virtualenvwrapper.sh
 fi
 
 
@@ -237,13 +262,16 @@ fi
 
 stty -ixon
 
-
 # ====================================
 #    start bash-dirhist, if present
 # ====================================
 
-
 case $0 in
+    -*)
+        # I am not sure why, but on login shell (i.e. whose name starts by
+        # "-"), exec()ing bash-dirhist hangs. This happens e.g. if you login
+        # from a tty
+        ;;
     *bash-dirhist)
         # we are already running bash-dirhist, nothing to do
         ;;
